@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}User{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="/user/dashboard">Dashboard</a> |
+        <a href="/user/appointments">Appointments</a> |
+        <a href="/user/book">Book Appointment</a> |
+        <a href="/user/profile">Profile</a>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

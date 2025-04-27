@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Admin{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="/admin/dashboard">Dashboard</a> |
+        <a href="/admin/add-employee">Add Employee</a> |
+        <a href="/admin/remove-employee">Remove Employee</a>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
