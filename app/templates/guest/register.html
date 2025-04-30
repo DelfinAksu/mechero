@@ -1,5 +1,14 @@
 {% extends 'layout/base_guest.html' %}
 
 {% block content %}
-<h1>Register Page</h1>
+  <h2>Kayıt Ol</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.fname.label }}<br>{{ form.fname(size=32) }}</p>
+    <p>{{ form.lname.label }}<br>{{ form.lname(size=32) }}</p>
+    <p>{{ form.email.label }}<br>{{ form.email(size=32) }}</p>
+    <p>{{ form.password.label }}<br>{{ form.password(size=32) }}</p>
+    <p>{{ form.confirm_password.label }}<br>{{ form.confirm_password(size=32) }}</p>
+    <p>{{ form.submit() }}</p>
+  </form>
 {% endblock %}
