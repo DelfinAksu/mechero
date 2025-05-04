@@ -1,0 +1,13 @@
+{% extends "layout/base_guest.html" %}
+
+{% block content %}
+<h2>Bayilerimiz</h2>
+<ul>
+  {% for d in dealerships %}
+    <li>
+      <strong>{{ d.name }}</strong><br>
+      {{ d.city }}, {{ d.district }}, {{ d.street }} No:{{ d.number }}
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}

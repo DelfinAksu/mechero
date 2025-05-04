@@ -28,4 +28,8 @@ def create_app():
     from app.routes.admin_routes import bp as admin_bp
     app.register_blueprint(admin_bp, url_prefix='/admin')
 
+    from app.routes.dealership_routes import bp as dealership_bp
+    app.register_blueprint(dealership_bp)
+
+
     return app
