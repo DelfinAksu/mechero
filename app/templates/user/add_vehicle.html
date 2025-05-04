@@ -1,0 +1,19 @@
+{% extends 'layout/base_user.html' %}
+{% block content %}
+<h2>Yeni Araç Ekle</h2>
+<form method="POST">
+  Marka: <input name="brand"><br>
+  Model: <input name="model"><br>
+  Plaka: <input name="plate_number"><br>
+  Model Yılı: <input name="year" type="number"><br>
+  Yakıt Türü: 
+  <select name="fuel_type">
+    <option value="Benzin">Benzin</option>
+    <option value="Dizel">Dizel</option>
+    <option value="Elektrik">Elektrik</option>
+    <option value="Hibrit">Hibrit</option>
+  </select><br>
+  Kilometre: <input name="mileage" type="number"><br>
+  <button type="submit">Kaydet</button>
+</form>
+{% endblock %}

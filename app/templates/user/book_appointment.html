@@ -1,5 +1,15 @@
 {% extends 'layout/base_user.html' %}
-
 {% block content %}
-<h1>Book Appointment Page</h1>
+<h2>Yeni Randevu Al</h2>
+<form method="POST">
+  Tarih: <input type="date" name="date"><br>
+  Saat: <input type="time" name="time"><br>
+  Araç:
+  <select name="vehicle_id">
+    {% for v in vehicles %}
+      <option value="{{ v.id }}">{{ v.brand }} {{ v.model }}</option>
+    {% endfor %}
+  </select><br>
+  <button type="submit">Kaydet</button>
+</form>
 {% endblock %}

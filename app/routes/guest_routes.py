@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, redirect, url_for, flash
-from app.forms import RegisterForm
+from app.forms import RegisterForm , LoginForm
 from app.models import User
 from app import db
+from flask_login import login_user, logout_user, current_user, login_required
 
 bp = Blueprint('guest', __name__)
 
@@ -30,4 +31,22 @@ def register_page():
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login_page():
-    return render_template('guest/login.html')
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and user.check_password(form.password.data):
+            login_user(user)
+            flash("Başarıyla giriş yaptınız!", "success")
+            return redirect(url_for('user.dashboard'))  # Kullanıcı paneline yönlendir
+        else:
+            flash("Geçersiz e-posta veya şifre", "danger")
+            return redirect(url_for('guest.login_page'))
+
+    return render_template('guest/login.html', form=form)
+
+@bp.route('/logout')
+@login_required
+def logout_page():
+    logout_user()
+    flash("Başarıyla çıkış yapıldı.", "info")
+    return redirect(url_for('guest.login_page'))

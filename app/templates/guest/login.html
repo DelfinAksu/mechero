@@ -1,5 +1,11 @@
 {% extends 'layout/base_guest.html' %}
 
 {% block content %}
-<h1>Login Page</h1>
+  <h2>Giriş Yap</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.email.label }}<br>{{ form.email(size=32) }}</p>
+    <p>{{ form.password.label }}<br>{{ form.password(size=32) }}</p>
+    <p>{{ form.submit() }}</p>
+  </form>
 {% endblock %}

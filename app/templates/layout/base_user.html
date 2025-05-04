@@ -5,11 +5,14 @@
 </head>
 <body>
     <nav>
-        <a href="/user/dashboard">Dashboard</a> |
-        <a href="/user/appointments">Appointments</a> |
-        <a href="/user/book">Book Appointment</a> |
-        <a href="/user/profile">Profile</a>
-    </nav>
+        {% if current_user.is_authenticated %}
+          <p>Merhaba, {{ current_user.fname }}!</p>
+          <a href="{{ url_for('guest.logout_page') }}">Çıkış Yap</a>
+        {% else %}
+          <a href="{{ url_for('guest.login_page') }}">Giriş</a>
+          <a href="{{ url_for('guest.register_page') }}">Kayıt</a>
+        {% endif %}
+      </nav>      
     <main>
         {% block content %}{% endblock %}
     </main>

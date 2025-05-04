@@ -1,0 +1,10 @@
+{% extends 'layout/base_user.html' %}
+{% block content %}
+<h2>Araçlarım</h2>
+<a href="{{ url_for('user.add_vehicle') }}">+ Yeni Araç Ekle</a>
+<ul>
+  {% for v in vehicles %}
+    <li>{{ v.brand }} {{ v.model }} - {{ v.plate_number }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
