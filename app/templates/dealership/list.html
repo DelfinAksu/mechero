@@ -2,12 +2,28 @@
 
 {% block content %}
 <h2>Bayilerimiz</h2>
-<ul>
-  {% for d in dealerships %}
-    <li>
-      <strong>{{ d.name }}</strong><br>
-      {{ d.city }}, {{ d.district }}, {{ d.street }} No:{{ d.number }}
-    </li>
-  {% endfor %}
-</ul>
+<form method="GET" action="{{ url_for('dealership.list_dealerships') }}">
+  <label for="city">Şehir Seç:</label>
+  <select name="city_id" id="city" onchange="this.form.submit()">
+      <option value="">Tüm Şehirler</option>
+      {% for city in cities %}
+          <option value="{{ city.id }}" {% if city.id|string == selected_city_id %}selected{% endif %}>
+              {{ city.name }}
+          </option>
+      {% endfor %}
+  </select>
+</form>
+{% if dealerships %}
+  <ul>
+    {% for d in dealerships %}
+      <li>
+        <strong>{{ d.name }}</strong><br>
+        {{ d.street }} No: {{ d.number }}<br>
+        Şehir: {{ d.city.name }}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Seçilen şehirde bayi bulunamadı.</p>
+{% endif %}
 {% endblock %}

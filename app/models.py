@@ -60,13 +60,19 @@ class Appointment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     vehicle_id = db.Column(db.Integer, db.ForeignKey('vehicles.id'), nullable=False)
 
+class City(db.Model):
+    __tablename__ = 'cities'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), unique=True, nullable=False)
+
+    dealerships = db.relationship('Dealership', backref='city', lazy=True)
+
 class Dealership(db.Model):
     __tablename__ = 'dealerships'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    city = db.Column(db.String(50), nullable=False)
-    district = db.Column(db.String(50), nullable=False)
     street = db.Column(db.String(100), nullable=False)
     number = db.Column(db.String(10), nullable=False)
     latitude = db.Column(db.Float, nullable=True)
     longitude = db.Column(db.Float, nullable=True)
+    city_id = db.Column(db.Integer, db.ForeignKey('cities.id'), nullable=False)
