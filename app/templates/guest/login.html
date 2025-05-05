@@ -1,11 +1,18 @@
 {% extends 'layout/base_guest.html' %}
 
 {% block content %}
-  <h2>Giriş Yap</h2>
-  <form method="POST">
+  
+  <form method="POST" class="register-form">
     {{ form.hidden_tag() }}
-    <p>{{ form.email.label }}<br>{{ form.email(size=32) }}</p>
-    <p>{{ form.password.label }}<br>{{ form.password(size=32) }}</p>
-    <p>{{ form.submit() }}</p>
+    <h2 class="form-title">Giriş Yap</h2>
+    <div class="from-field">
+      <p>{{ form.email.label }}<br>{{ form.email(size=32) }}</p>
+    </div>
+    <div class="form-field">
+      <p>{{ form.password.label }}<br>{{ form.password(size=32) }}</p>
+    </div>
+    <div>
+      <p>{{ form.submit(class="login-button") }}</p>
+    </div>
   </form>
 {% endblock %}
