@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from app import db
-from app.models import Vehicle, Appointment
+from app.models import Vehicle, Appointment, City, Dealership
 from datetime import datetime
 
 bp = Blueprint('user', __name__)
@@ -19,11 +19,21 @@ def appointments():
 @bp.route('/appointments/book', methods=['GET', 'POST'])
 @login_required
 def book_appointment():
+    cities = City.query.all()
+    
+    selected_city_id = request.form.get('city_id') or request.args.get('city_id')
+    selected_dealership_id = request.form.get('dealership_id')
+    
+    dealerships = []
+    if selected_city_id:
+        dealerships = Dealership.query.filter_by(city_id=selected_city_id).all()
+
     if request.method == 'POST':
         try:
             vehicle_id = int(request.form['vehicle_id'])
             date_str = request.form['date']
             time_str = request.form['time']
+            dealership_id = int(request.form['dealership_id'])
 
             date_obj = datetime.strptime(date_str, "%Y-%m-%d").date()
             time_obj = datetime.strptime(time_str, "%H:%M").time()
@@ -31,6 +41,7 @@ def book_appointment():
             appointment = Appointment(
                 vehicle_id=vehicle_id,
                 user_id=current_user.id,
+                dealership_id=dealership_id,
                 date=date_obj,
                 time=time_obj,
                 status='Scheduled',
@@ -42,11 +53,18 @@ def book_appointment():
             return redirect(url_for('user.dashboard'))
 
         except Exception as e:
-            db.session.rollback()  # 🔥 BU DA GEREKLİ ARTIK
+            db.session.rollback()
             flash(f"Bir hata oluştu: {e}", "danger")
 
     user_vehicles = current_user.vehicles
-    return render_template('user/book_appointment.html', vehicles=user_vehicles)
+    return render_template(
+        'user/book_appointment.html',
+        vehicles=user_vehicles,
+        cities=cities,
+        dealerships=dealerships,
+        selected_city_id=selected_city_id,
+        selected_dealership_id=selected_dealership_id
+    )
 
 @bp.route('/profile')
 def profile():

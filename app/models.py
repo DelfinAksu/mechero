@@ -59,6 +59,9 @@ class Appointment(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     vehicle_id = db.Column(db.Integer, db.ForeignKey('vehicles.id'), nullable=False)
+    dealership_id = db.Column(db.Integer, db.ForeignKey('dealerships.id'), nullable=False)
+    dealership = db.relationship('Dealership', backref='appointments')
+
 
 class City(db.Model):
     __tablename__ = 'cities'

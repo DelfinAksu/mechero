@@ -2,6 +2,25 @@
 {% block content %}
 <h2>Yeni Randevu Al</h2>
 <form method="POST">
+  Şehir:
+  <select name="city_id" id="city" onchange="this.form.submit()">
+    <option value="">Şehir Seç</option>
+    {% for city in cities %}
+      <option value="{{ city.id }}" {% if selected_city_id and city.id == selected_city_id|int %}selected{% endif %}>
+        {{ city.name }}
+      </option>
+    {% endfor %}
+  </select><br>
+
+  Bayi:
+  <select name="dealership_id">
+    <option value="">Bayi Seç</option>
+    {% for d in dealerships %}
+      <option value="{{ d.id }}" {% if selected_dealership_id and d.id == selected_dealership_id|int %}selected{% endif %}>
+        {{ d.name }} ({{ d.city.name }})
+      </option>
+    {% endfor %}
+  </select><br>
   Tarih: <input type="date" name="date"><br>
   Saat: <input type="time" name="time"><br>
   Araç:
