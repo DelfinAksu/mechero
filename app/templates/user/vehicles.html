@@ -1,5 +1,15 @@
 {% extends 'layout/base_user.html' %}
 {% block content %}
+<div class="vehicles-page">
+  <h2 class="vehicles-title">Araçlarım</h2>
+  <ul class="vehicles-list">
+    {% for v in vehicles %}
+      <li class="vehicle-item">{{ v.brand }} {{ v.model }} - {{ v.plate_number }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{{ url_for('user.add_vehicle') }}" class="add-vehicle-button">+ Yeni Araç Ekle</a>
+</div>
+<!--
 <h2>Araçlarım</h2>
 <a href="{{ url_for('user.add_vehicle') }}">+ Yeni Araç Ekle</a>
 <ul>
@@ -7,4 +17,5 @@
     <li>{{ v.brand }} {{ v.model }} - {{ v.plate_number }}</li>
   {% endfor %}
 </ul>
+-->
 {% endblock %}

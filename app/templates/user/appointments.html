@@ -1,10 +1,19 @@
 {% extends 'layout/base_user.html' %}
 {% block content %}
-<h2>Randevularım</h2>
+<div class="appointments-page">
+  <h2 class="appointments-title">Randevularım</h2>
+  <ul class="appointments-list">
+    {% for a in appointments %}
+      <li class="appointment-item">{{ a.date }} - {{ a.time }} - {{ a.status }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{{ url_for('user.book_appointment') }}" class="add-appointment-button">+ Yeni Randevu Al</a>
+</div>
+<!--<h2>Randevularım</h2>
 <a href="{{ url_for('user.book_appointment') }}">+ Yeni Randevu Al</a>
 <ul>
   {% for a in appointments %}
     <li>{{ a.date }} - {{ a.time }} - {{ a.status }}</li>
   {% endfor %}
-</ul>
+</ul>-->
 {% endblock %}
