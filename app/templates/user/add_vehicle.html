@@ -1,5 +1,6 @@
 {% extends 'layout/base_user.html' %}
 {% block content %}
+<!--
 <h2>Yeni Araç Ekle</h2>
 <form method="POST">
   Marka: <input name="brand"><br>
@@ -16,4 +17,40 @@
   Kilometre: <input name="mileage" type="number"><br>
   <button type="submit">Kaydet</button>
 </form>
+-->
+<div class="add-vehicle-form">
+  <h2 class="form-title">Yeni Araç Ekle</h2>
+  <form method="POST">
+      <div class="form-field">
+          <label>Marka:</label>
+          <input name="brand" type="text">
+      </div>
+      <div class="form-field">
+          <label>Model:</label>
+          <input name="model" type="text">
+      </div>
+      <div class="form-field">
+          <label>Plaka:</label>
+          <input name="plate_number" type="text">
+      </div>
+      <div class="form-field">
+          <label>Model Yılı:</label>
+          <input name="year" type="number">
+      </div>
+      <div class="form-field">
+          <label>Yakıt Türü:</label>
+          <select name="fuel_type">
+              <option value="Benzin">Benzin</option>
+              <option value="Dizel">Dizel</option>
+              <option value="Elektrik">Elektrik</option>
+              <option value="Hibrit">Hibrit</option>
+          </select>
+      </div>
+      <div class="form-field">
+          <label>Kilometre:</label>
+          <input name="mileage" type="number">
+      </div>
+      <button type="submit" class="submit-button">Kaydet</button>
+  </form>
+</div>
 {% endblock %}

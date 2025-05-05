@@ -54,8 +54,9 @@ body {
     width: 100%;
 }
 
-/* Login butonu */
-.nav-right .login-button {
+/* Login logout butonu */
+.nav-right .login-button, 
+.nav-right .logout-button {
     background-color: #0056b3;
     color: white;
     padding: 5px 12px;
@@ -67,14 +68,16 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Login buton hover: açık mavi arka plan + koyu yazı */
-.nav-right .login-button:hover {
+/* Login ve logout buton hover: açık mavi arka plan + koyu yazı */
+.nav-right .login-button:hover,
+.nav-right .logout-button:hover {
     background-color: #add8e6; /* Açık mavi */
     color: #003f8a; /* Yazı biraz koyu olsun ki okunaklı kalsın */
 }
 
-/* Login butonunda hover çizgisi olmasın */
-.nav-right .login-button::after {
+/* Login ve logout butonunda hover çizgisi olmasın */
+.nav-right .login-button::after,
+.nav-right .logout-button::after {
     display: none;
 }
 
@@ -155,6 +158,191 @@ body {
 .register-form input[type="submit"]:active {
     transform: translateY(2px);
 }
+
+
+
+/*user dashboard sayfası*/
+
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* Ekran yüksekliğinin %70’i kadar */
+}
+
+.dashboard-message {
+    font-size: 28px;
+    color: #0056b3;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
+/* Araçlar sayfası */
+.vehicles-page {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Başlık */
+.vehicles-title {
+    color: #0056b3;
+    margin-bottom: 20px;
+}
+
+/* Araç listesi */
+.vehicles-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.vehicle-item {
+    background-color: #c4e1f0; /* açık mavi kutucuk */
+    color: #004c6d;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Yeni araç ekle butonu */
+.add-vehicle-button {
+    display: inline-block;
+    background-color: #0056b3;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.add-vehicle-button:hover {
+    background-color: #003f8a;
+}
+
+
+
+
+/* Araç ekleme formu (register form ile aynı görünsün) */
+.add-vehicle-form {
+    width: 350px;
+    margin: 50px 0 0 50px; /* sola yaslanmış gibi görünsün */
+    padding: 30px;
+    background-color: #f0f8ff;
+    border: 5px solid #66b3ff;
+    border-radius: 25px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.add-vehicle-form .form-title {
+    text-align: center;
+    color: #0056b3;
+    margin-bottom: 25px;
+    font-size: 22px;
+}
+
+.add-vehicle-form .form-field {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.add-vehicle-form label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 3px;
+    color: #0056b3;
+    font-weight: bold;
+}
+
+.add-vehicle-form input[type="text"],
+.add-vehicle-form input[type="number"],
+.add-vehicle-form select {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #dff6ff;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.add-vehicle-form input:focus,
+.add-vehicle-form select:focus {
+    outline: none;
+    box-shadow: 0 0 5px #66b3ff;
+}
+
+/* Kaydet butonu */
+.submit-button {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: block;
+    margin: 30px auto 0 auto; /* ortalar */
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #003f8a;
+}
+
+
+
+
+/* Randevular sayfası */
+.appointments-page {
+    width: 350px;
+    margin: 50px 0 0 50px; /* sola yaslanır */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Başlık */
+.appointments-title {
+    color: #0056b3;
+    margin-bottom: 20px;
+}
+
+/* Liste */
+.appointments-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.appointment-item {
+    background-color: #dff6ff; /* açık mavi kutucuk */
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    color: #0056b3;
+}
+
+/* Buton */
+.add-appointment-button {
+    display: inline-block;
+    background-color: #0056b3;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.add-appointment-button:hover {
+    background-color: #003f8a;
+}
+
 
 
 
