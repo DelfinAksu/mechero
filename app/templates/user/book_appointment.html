@@ -2,6 +2,25 @@
 {% block content %}
 <h2>Yeni Randevu Al</h2>
 <form method="POST">
+  Şehir:
+  <select name="city_id" id="city" onchange="this.form.submit()">
+    <option value="">Şehir Seç</option>
+    {% for city in cities %}
+      <option value="{{ city.id }}" {% if selected_city_id and city.id == selected_city_id|int %}selected{% endif %}>
+        {{ city.name }}
+      </option>
+    {% endfor %}
+  </select><br>
+
+  Bayi:
+  <select name="dealership_id">
+    <option value="">Bayi Seç</option>
+    {% for d in dealerships %}
+      <option value="{{ d.id }}" {% if selected_dealership_id and d.id == selected_dealership_id|int %}selected{% endif %}>
+        {{ d.name }} ({{ d.city.name }})
+      </option>
+    {% endfor %}
+  </select><br>
   Tarih: <input type="date" name="date"><br>
   Saat: <input type="time" name="time"><br>
   Araç:
@@ -12,4 +31,33 @@
   </select><br>
   <button type="submit">Kaydet</button>
 </form>
+<!-- Harita Kutusu -->
+<div id="map" style="height: 400px; margin-top: 20px;"></div>
+
+<!-- Leaflet CSS ve JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+ <!-- JSON veriyi taşıyan gizli div -->
+ <div id="dealership-data" data-json='{{ dealerships_json | tojson | safe }}'></div>
+
+<!-- Marker JS -->
+<script>
+  const jsonData = document.getElementById('dealership-data').getAttribute('data-json');
+    const dealershipData = JSON.parse(jsonData);
+    
+    var map = L.map('map').setView([39.0, 35.0], 6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    }).addTo(map);
+
+    dealershipData.forEach(d => {
+      if (d.latitude && d.longitude) {
+        L.marker([d.latitude, d.longitude])
+          .addTo(map)
+          .bindPopup(`<strong>${d.name}</strong><br>${d.street} No:${d.number}`);
+      }
+    });
+</script>
+
 {% endblock %}
