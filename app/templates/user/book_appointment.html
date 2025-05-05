@@ -31,4 +31,33 @@
   </select><br>
   <button type="submit">Kaydet</button>
 </form>
+<!-- Harita Kutusu -->
+<div id="map" style="height: 400px; margin-top: 20px;"></div>
+
+<!-- Leaflet CSS ve JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+ <!-- JSON veriyi taşıyan gizli div -->
+ <div id="dealership-data" data-json='{{ dealerships_json | tojson | safe }}'></div>
+
+<!-- Marker JS -->
+<script>
+  const jsonData = document.getElementById('dealership-data').getAttribute('data-json');
+    const dealershipData = JSON.parse(jsonData);
+    
+    var map = L.map('map').setView([39.0, 35.0], 6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    }).addTo(map);
+
+    dealershipData.forEach(d => {
+      if (d.latitude && d.longitude) {
+        L.marker([d.latitude, d.longitude])
+          .addTo(map)
+          .bindPopup(`<strong>${d.name}</strong><br>${d.street} No:${d.number}`);
+      }
+    });
+</script>
+
 {% endblock %}

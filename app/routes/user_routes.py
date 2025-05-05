@@ -21,12 +21,27 @@ def appointments():
 def book_appointment():
     cities = City.query.all()
     
-    selected_city_id = request.form.get('city_id') or request.args.get('city_id')
+    selected_city_id = request.form.get('city_id') or request.args.get('city_id') or str(cities[0].id)
     selected_dealership_id = request.form.get('dealership_id')
-    
+
     dealerships = []
+    dealerships_json = []
+    
     if selected_city_id:
         dealerships = Dealership.query.filter_by(city_id=selected_city_id).all()
+
+        # Harita için sadeleştirilmiş versiyon
+        dealerships_json = [
+            {
+                'id': d.id,
+                'name': d.name,
+                'street': d.street,
+                'number': d.number,
+                'latitude': d.latitude,
+                'longitude': d.longitude
+            }
+            for d in dealerships
+        ]
 
     if request.method == 'POST':
         try:
@@ -62,7 +77,8 @@ def book_appointment():
         vehicles=user_vehicles,
         cities=cities,
         dealerships=dealerships,
-        selected_city_id=selected_city_id,
+        dealerships_json=dealerships_json,  # 👈 Harita için eklenen veri
+        selected_city_id=str(selected_city_id),
         selected_dealership_id=selected_dealership_id
     )
 
