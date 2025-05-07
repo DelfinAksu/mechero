@@ -1,10 +1,9 @@
-/* Sayfa arka planı */
+/* Sayfa arka planı 
 body {
     margin: 0;
     background-color: #fafafa;
     font-family: Arial, sans-serif;
 }
-
 /* Navbar */
 .navbar {
     display: flex;
@@ -301,7 +300,7 @@ body {
 /* Randevular sayfası */
 .appointments-page {
     width: 350px;
-    margin: 50px 0 0 50px; /* sola yaslanır */
+    margin: 80px auto;
     padding: 20px;
     text-align: center;
 }
@@ -342,6 +341,56 @@ body {
 .add-appointment-button:hover {
     background-color: #003f8a;
 }
+
+
+/* Yeni Randevu Al sayfası */
+
+/* Form ve Harita Konteyneri */
+.form-map-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Formu dikeyde ortalar */
+    flex-wrap: wrap; /* Responsive için alta geçer */
+    gap: 30px;
+    margin: 30px;
+}
+
+/* Harita Kutusu */
+#map {
+    flex: 1;
+    min-width: 350px;
+    min-height: 400px;
+    border: 5px solid #66b3ff;
+    border-radius: 25px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Formun içindeki dropdownları ve inputları aynı hizaya getirelim */
+.register-form select,
+.register-form input[type="date"],
+.register-form input[type="time"] {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #dff6ff;
+    box-sizing: border-box;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Responsive kırılım için isteğe bağlı */
+@media (max-width: 900px) {
+    .form-map-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    #map {
+        width: 100%;
+    }
+}
+
+
 
 
 
