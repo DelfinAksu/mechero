@@ -390,6 +390,75 @@ body {
     }
 }
 
+/*Dealerships sayfası*/
+
+/* Ana konteyner */
+.dealership-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 30px;
+}
+
+/* Sol kutu: liste */
+.dealership-list-box {
+    width: 350px;
+    padding: 30px;
+    background-color: #f0f8ff;
+    border: 5px solid #66b3ff;
+    border-radius: 25px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Sağ kutu: harita */
+.dealership-map-box {
+    flex: 1;
+    min-width: 400px;
+    min-height: 400px;
+    height: 500px;
+    border: 5px solid #66b3ff;
+    border-radius: 25px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Bayi listesi stilleri */
+.dealership-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.dealership-list li {
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .dealership-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .dealership-map-box {
+        width: 90%;
+        height: 400px;
+    }
+}
+
+
 
 
 
