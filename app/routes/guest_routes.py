@@ -83,3 +83,11 @@ def list_dealerships():
         dealerships_json=dealerships_json,
         selected_city_id=city_id
     )
+
+@bp.route('/about')
+def about_page():
+    return render_template('guest/about.html')
+
+@bp.route('/')
+def index_page():
+    return render_template('guest/index.html')
