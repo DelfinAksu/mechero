@@ -17,7 +17,7 @@ body {
 
 /* Sol kısım: logo */
 .logo {
-    font-size: 24px;
+    font-size: 36px;
     font-weight: bold;
     color: #0056b3; /* Mavi ton */
     text-decoration: none;
@@ -32,7 +32,7 @@ body {
 .nav-right a {
     color: #004c6d;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 20px;
     position: relative;
     padding: 5px 0;
 }
@@ -60,7 +60,7 @@ body {
     color: white;
     padding: 5px 12px;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 20px;
     text-decoration: none;
     position: relative; /* hover çizgi olmaması için */
     overflow: hidden;
@@ -420,7 +420,7 @@ body {
     height: 500px;
     border: 5px solid #66b3ff;
     border-radius: 25px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 15px #004c6d(0, 0, 0, 0.05);
     overflow: hidden;
     position: relative;
 }
@@ -439,11 +439,21 @@ body {
     padding: 0;
     margin-top: 20px;
 }
+.dealership-list-box h2 {
+    color: #004c6d
+}
+
+.dealership-list-box label {
+    color: #004c6d; /* istediğin rengi buraya yaz */
+    font-weight: bold; /* istersen kalın yapabilirsin */
+}
+
+
 
 .dealership-list li {
     margin-bottom: 15px;
     font-size: 14px;
-    color: #333;
+    color: #004c6d;
 }
 
 /* Responsive */
