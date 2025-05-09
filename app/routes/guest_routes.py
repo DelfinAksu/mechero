@@ -66,10 +66,10 @@ def list_dealerships():
 
     dealerships_json = [
         {
-            'id': d.id,
-            'name': d.name,
-            'street': d.street,
-            'number': d.number,
+            'id': d.dealership_id,
+            'name': d.d_name,
+            'address' : d.address,
+            'phone' : d.d_phone,
             'latitude': d.latitude,
             'longitude': d.longitude
         }

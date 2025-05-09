@@ -27,9 +27,9 @@
           <ul class="dealership-list">
               {% for d in dealerships %}
                   <li>
-                      <strong>{{ d.name }}</strong><br>
-                      {{ d.street }} No: {{ d.number }}<br>
-                      Şehir: {{ d.city.name }}
+                      <strong>{{ d.d_name }}</strong><br>
+                      {{ d.address }}<br>
+                      Şehir ID: {{ d.city_id }}
                   </li>
               {% endfor %}
           </ul>
