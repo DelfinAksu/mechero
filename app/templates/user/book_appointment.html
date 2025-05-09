@@ -54,7 +54,7 @@
   </div>
 
   <!-- Harita Kutucuğu -->
-  <div id="map"></div>
+  <div id="appointment-map"></div>
 
 </div>
 
@@ -70,7 +70,7 @@
   const jsonData = document.getElementById('dealership-data').getAttribute('data-json');
   const dealershipData = JSON.parse(jsonData);
 
-  var map = L.map('map').setView([39.0, 35.0], 6);
+  var map = L.map('appointment-map').setView([39.0, 35.0], 6);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
   }).addTo(map);

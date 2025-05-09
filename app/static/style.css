@@ -356,7 +356,7 @@ body {
 }
 
 /* Harita Kutusu */
-#map {
+#appointment-map {
     flex: 1;
     min-width: 350px;
     min-height: 400px;
@@ -385,7 +385,7 @@ body {
         flex-direction: column;
         align-items: center;
     }
-    #map {
+    #appointment-map {
         width: 100%;
     }
 }
