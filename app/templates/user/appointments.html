@@ -2,18 +2,33 @@
 {% block content %}
 <div class="appointments-page">
   <h2 class="appointments-title">Randevularım</h2>
-  <ul class="appointments-list">
+  <div class="appointments-list">
     {% for a in appointments %}
-      <li class="appointment-item">{{ a.date }} - {{ a.time }} - {{ a.status }}</li>
+      <div class="appointment-item">
+        <p><strong>Araç:</strong> {{ a.vehicle.plate_number }}</p>
+        <p><strong>Tarih:</strong> {{ a.a_date }} - {{ a.a_time.strftime('%H:%M') }}</p>
+        <p><strong>Bakım Türü:</strong> {{ a.maintenance_type.type_name }}</p>
+        <p><strong>Fiyat:</strong> ₺{{ a.price }}</p>
+
+        <div class="status-section">
+          <span class="status-label"><strong>Durum:</strong> {{ a.status }}</span>
+
+          {% set current_time = (now().strftime('%Y-%m-%d %H:%M')) %}
+          {% set appointment_time = (a.a_date|string + ' ' + a.a_time.strftime('%H:%M')) %}
+
+          {% if a.status == 'Scheduled' and appointment_time > current_time %}
+            <form method="POST" action="{{ url_for('user.cancel_appointment', appointment_id=a.appointment_id) }}" onsubmit="return confirm('Randevuyu iptal etmek istediğinizden emin misiniz?');">
+              <button type="submit" class="cancel-button">İptal Et</button>
+            </form>
+          {% elif appointment_time < current_time and a.status == 'Scheduled' %}
+            <!-- Completed'e otomatik geçir, bunu Python tarafında yapacağız -->
+            <span class="status-auto">✔ Otomatik Tamamlandı</span>
+          {% endif %}
+        </div>
+      </div>
     {% endfor %}
-  </ul>
+  </div>
+
   <a href="{{ url_for('user.book_appointment') }}" class="add-appointment-button">+ Yeni Randevu Al</a>
 </div>
-<!--<h2>Randevularım</h2>
-<a href="{{ url_for('user.book_appointment') }}">+ Yeni Randevu Al</a>
-<ul>
-  {% for a in appointments %}
-    <li>{{ a.date }} - {{ a.time }} - {{ a.status }}</li>
-  {% endfor %}
-</ul>-->
 {% endblock %}
