@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from app import db
-from app.models import Vehicle, Appointment, City, Dealership, MaintenanceType
+from app.models import Vehicle, Appointment, City, Dealership, MaintenanceType, User
 from datetime import datetime
 
 bp = Blueprint('user', __name__)
@@ -115,12 +115,46 @@ def book_appointment():
     )
 
 @bp.route('/profile')
+@login_required
 def profile():
-    return render_template('user/profile.html')
+    return render_template('user/profile.html', user=current_user)
 
-@bp.route('/update-profile')
+@bp.route('/update-profile', methods=['GET', 'POST'])
+@login_required
 def update_profile():
-    return render_template('user/update_profile.html')
+    if request.method == 'POST':
+        # Temel bilgiler
+        current_user.u_fname = request.form['fname']
+        current_user.u_lname = request.form['lname']
+        current_user.u_phone = request.form['phone']
+        current_user.u_mail = request.form['email']
+
+        # Şifre değiştirme isteği varsa
+        old_password = request.form.get('old_password')
+        new_password = request.form.get('new_password')
+        confirm_password = request.form.get('confirm_password')
+
+        if old_password or new_password or confirm_password:
+            if not current_user.check_password(old_password):
+                flash("Mevcut şifre hatalı!", "danger")
+                return redirect(url_for('user.update_profile'))
+
+            if new_password != confirm_password:
+                flash("Yeni şifreler uyuşmuyor!", "warning")
+                return redirect(url_for('user.update_profile'))
+
+            if len(new_password) < 6:
+                flash("Yeni şifre en az 6 karakter olmalı.", "warning")
+                return redirect(url_for('user.update_profile'))
+
+            current_user.set_password(new_password)
+            flash("Şifre başarıyla güncellendi.", "success")
+
+        db.session.commit()
+        flash("Profil bilgileri güncellendi.", "success")
+        return redirect(url_for('user.profile'))
+
+    return render_template('user/update_profile.html', user=current_user)
 
 @bp.route('/vehicles')
 @login_required
@@ -162,3 +196,17 @@ def add_vehicle():
 
     return render_template('user/add_vehicle.html')
 
+@bp.route('/vehicles/delete/<int:vehicle_id>', methods=['POST'])
+@login_required
+def delete_vehicle(vehicle_id):
+    vehicle = Vehicle.query.get_or_404(vehicle_id)
+
+    # Güvenlik: Bu araç gerçekten giriş yapan kullanıcıya mı ait?
+    if vehicle.user_id != current_user.user_id:
+        flash("Bu aracı silmeye yetkiniz yok!", "danger")
+        return redirect(url_for('user.vehicles'))
+
+    db.session.delete(vehicle)
+    db.session.commit()
+    flash("Araç başarıyla silindi.", "info")
+    return redirect(url_for('user.vehicles'))
