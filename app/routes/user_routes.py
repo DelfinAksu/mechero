@@ -69,12 +69,24 @@ def book_appointment():
         ]
 
     if request.method == 'POST' and request.form.get('date') and request.form.get('time'):
+        def get_price_by_type(type_name):
+            if type_name == 'Periodic':
+                return 8000
+            elif type_name == 'Mechanical':
+                return 15000
+            elif type_name == 'Damage Repair':
+                return 35000
+            elif type_name == 'Other':
+                return 10000
+            return 0
         try:
             vehicle_id = int(request.form['vehicle_id'])
             date_str = request.form['date']
             time_str = request.form['time']
             dealership_id = int(request.form['dealership_id'])
             type_id = int(request.form['type_id'])
+            maintenance_type = MaintenanceType.query.get(type_id)
+            price = get_price_by_type(maintenance_type.type_name)
 
             date_obj = datetime.strptime(date_str, "%Y-%m-%d").date()
             time_obj = datetime.strptime(time_str, "%H:%M").time()
@@ -87,7 +99,7 @@ def book_appointment():
                 a_date=date_obj,
                 a_time=time_obj,
                 status='Scheduled',
-                price=0.0
+                price=price
             )
 
             db.session.add(appointment)

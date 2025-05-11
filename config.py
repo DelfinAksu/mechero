@@ -1,8 +1,10 @@
 import os
+from dotenv import load_dotenv
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, '.env'))  # .env dosyasını yükle
 
 class Config:
-    SECRET_KEY = 'dev-key'  # sadece geliştirme için kullanılabilir bir key
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:4rmSiRUv@localhost:5432/mechero'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
