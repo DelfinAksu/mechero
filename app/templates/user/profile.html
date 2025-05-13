@@ -1,5 +1,11 @@
 {% extends 'layout/base_user.html' %}
-
 {% block content %}
-<h1>Profile Page</h1>
+<h2>Profilim</h2>
+<ul>
+  <li><strong>Ad:</strong> {{ user.u_fname }}</li>
+  <li><strong>Soyad:</strong> {{ user.u_lname }}</li>
+  <li><strong>Telefon:</strong> {{ user.u_phone }}</li>
+  <li><strong>E-posta:</strong> {{ user.u_mail }}</li>
+</ul>
+<a href="{{ url_for('user.update_profile') }}">Profili Güncelle</a>
 {% endblock %}

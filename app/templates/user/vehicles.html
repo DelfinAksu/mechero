@@ -4,18 +4,17 @@
   <h2 class="vehicles-title">Araçlarım</h2>
   <ul class="vehicles-list">
     {% for v in vehicles %}
-      <li class="vehicle-item">{{ v.brand }} {{ v.model }} - {{ v.plate_number }}</li>
+      <li class="vehicle-item">
+        {{ v.brand }} {{ v.model }} - {{ v.plate_number }}
+        <form method="POST"
+          action="{{ url_for('user.delete_vehicle', vehicle_id=v.vehicle_id) }}"
+          style="display:inline;"
+          onsubmit="return confirm('Bu aracı silerseniz, bu araca ait randevular da silinecektir. Devam etmek istiyor musunuz?');">
+          <button type="submit" class="delete-button">❌</button>
+        </form>
+      </li>
     {% endfor %}
   </ul>
   <a href="{{ url_for('user.add_vehicle') }}" class="add-vehicle-button">+ Yeni Araç Ekle</a>
 </div>
-<!--
-<h2>Araçlarım</h2>
-<a href="{{ url_for('user.add_vehicle') }}">+ Yeni Araç Ekle</a>
-<ul>
-  {% for v in vehicles %}
-    <li>{{ v.brand }} {{ v.model }} - {{ v.plate_number }}</li>
-  {% endfor %}
-</ul>
--->
 {% endblock %}

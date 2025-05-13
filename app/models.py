@@ -16,7 +16,7 @@ class User(UserMixin, db.Model):
     u_lname = db.Column(db.String(50), nullable=False)
     u_phone = db.Column(db.String(15), nullable=False)
     u_mail = db.Column(db.String(100), unique=True, nullable=False)
-    u_password = db.Column(db.String(50), nullable=False)
+    u_password = db.Column(db.String(255), nullable=False)
     u_created_at = db.Column(db.DateTime, default=datetime.utcnow)
     u_updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 

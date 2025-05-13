@@ -11,21 +11,26 @@ bp = Blueprint('guest', __name__)
 def register_page():
     form = RegisterForm()
     if form.validate_on_submit():
-        existing_user = User.query.filter_by(email=form.email.data).first()
+        existing_user = User.query.filter_by(u_mail=form.email.data).first()
         if existing_user:
             flash("Bu e-posta adresi zaten kayıtlı!", "danger")
             return redirect(url_for('guest.register_page'))
 
-        user = User(
-            fname=form.fname.data,
-            lname=form.lname.data,
-            email=form.email.data
-        )
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash("Kayıt başarılı! Giriş yapabilirsiniz.", "success")
-        return redirect(url_for('guest.login_page'))
+        try:
+            user = User(
+                u_fname=form.fname.data,
+                u_lname=form.lname.data,
+                u_phone=form.phone.data,
+                u_mail=form.email.data
+            )
+            user.set_password(form.password.data)
+            db.session.add(user)
+            db.session.commit()
+            flash("Kayıt başarılı! Giriş yapabilirsiniz.", "success")
+            return redirect(url_for('guest.login_page'))
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Kayıt sırasında bir hata oluştu: {e}", "danger")
 
     return render_template('guest/register.html', form=form)
 
@@ -34,7 +39,7 @@ def register_page():
 def login_page():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(u_mail=form.email.data).first()
         if user and user.check_password(form.password.data):
             login_user(user)
             flash("Başarıyla giriş yaptınız!", "success")
@@ -42,6 +47,9 @@ def login_page():
         else:
             flash("Geçersiz e-posta veya şifre", "danger")
             return redirect(url_for('guest.login_page'))
+    
+    else:
+        print("🛑 FORM HATALARI:", form.errors)
 
     return render_template('guest/login.html', form=form)
 
