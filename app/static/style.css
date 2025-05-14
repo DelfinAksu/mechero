@@ -91,6 +91,63 @@ main {
 .nav-right .logout-button::after {
     display: none;
 }
+/* Hamburger buton - mobilde görünür */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #004c6d;
+}
+
+/* Mobil görünüm */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-right {
+        display: none; /* Başta gizli */
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: center;
+        width: 100%;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .nav-right.show {
+        display: flex; /* Menü açılınca görünür */
+        background-color: #c4e1f0;
+    }
+
+    .nav-right a,
+    .nav-right .login-button {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+    }
+      .nav-right a {
+    color: #004c6d;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+  }
+
+  .nav-right a:hover {
+    color: #3399ff; /* Hover rengi */
+  }
+
+  /* Eğer ::after çizgisi varsa mobilde iptal edelim */
+  .nav-right a::after {
+    display: none !important;
+  }
+}
 
 
 
@@ -541,20 +598,33 @@ main {
         max-width: 90%;
     }
 }
+@media (max-width: 768px) {
+    .stat-circle {
+        width: 90%;
+        height: auto;
+        border-radius: 20px;
+        padding: 30px;
+        margin: 10px 0;
+    }
+
+    .stat-circle h2 {
+        font-size: 24px;
+    }
+}
 
 /* İstatistikler kısmı */
 .about-stats {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
     margin-top: 30px;
+    justify-items: center;
 }
 
 /* Daireler */
 .stat-circle {
-    width: 250px;
-    height: 250px;
+    width: 400px;
+    height: 300px;
     border-radius: 50%;
     padding: 20px;
     box-sizing: border-box;
@@ -566,7 +636,6 @@ main {
     position: relative;
     z-index: 1;
     text-align: center;
-    margin: 0 -70px; /* Daireleri biraz iç içe geçirir */
 }
 
 .stat-circle.light {
@@ -602,15 +671,29 @@ main {
     font-size: 12px;
     margin-top: 10px;
     text-align: center;
+    padding: 0 40px; 
+
+}
+.founders {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    gap: 0;
 }
 
-/* Kurucu ikonları */
-.founder-icons {
+.founder {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 15px;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
 }
+
+.founder p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
 
 .founder-icon {
     width: 50px;
@@ -618,6 +701,20 @@ main {
     background-color: white;
     border-radius: 50%;
 }
+.founder-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #fff;
+}
+
+.founder-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 
 
