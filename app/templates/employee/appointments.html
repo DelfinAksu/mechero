@@ -1,0 +1,25 @@
+{% extends "layout/base_employee.html" %}
+
+{% block content %}
+<div class="appointments-page">
+  <h2 class="appointments-title">Atandığınız Randevular</h2>
+  {% if appointments %}
+    <ul class="appointments-list">
+      {% for a in appointments %}
+        <li class="appointment-item">
+          📅 <strong>{{ a.a_date }}</strong> - 🕒 {{ a.a_time.strftime('%H:%M') }}<br>
+          🚗 Araç: {{ a.vehicle.brand }} {{ a.vehicle.model }}<br>
+          👤 Müşteri: {{ a.user.u_fname }} {{ a.user.u_lname }}<br>
+          🔧 Bakım Türü: {{ a.maintenance_type.type_name }}<br>
+          🏢 Bayi: {{ a.dealership.d_name }}
+        </li>
+        <li class="appointment-item {% if a.status == 'Cancelled' %}cancelled{% endif %}">
+            {{ a.a_date }} - {{ a.a_time }} - {{ a.status }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Size atanmış randevu bulunmamaktadır.</p>
+  {% endif %}
+</div>
+{% endblock %}

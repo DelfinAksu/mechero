@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from app.forms import RegisterForm, LoginForm
-from app.models import User, Dealership, City
+from app.models import User, Dealership, City, Employee
 from app import db
 from flask_login import login_user, logout_user, current_user, login_required
 
@@ -34,20 +34,39 @@ def register_page():
 
     return render_template('guest/register.html', form=form)
 
-# 🔑 Giriş
 @bp.route('/login', methods=['GET', 'POST'])
 def login_page():
     form = LoginForm()
+
     if form.validate_on_submit():
-        user = User.query.filter_by(u_mail=form.email.data).first()
-        if user and user.check_password(form.password.data):
+        email = form.email.data
+        password = form.password.data
+
+        # Eğer çalışan girişi ise
+        if email.endswith('@mechero.com'):
+            try:
+                emp_id = int(email.split('@')[0])
+                employee = Employee.query.filter_by(employee_id=emp_id).first()
+                if employee and password == str(employee.employee_id):
+                    login_user(employee)
+                    flash("Çalışan girişi başarılı!", "success")
+                    return redirect(url_for('employee.dashboard'))
+                else:
+                    flash("Geçersiz çalışan bilgileri", "danger")
+            except:
+                flash("Hatalı çalışan e-posta formatı", "danger")
+            return redirect(url_for('guest.login_page'))
+
+        # Eğer normal kullanıcı ise
+        user = User.query.filter_by(u_mail=email).first()
+        if user and user.check_password(password):
             login_user(user)
-            flash("Başarıyla giriş yaptınız!", "success")
+            flash("Giriş başarılı!", "success")
             return redirect(url_for('user.dashboard'))
         else:
             flash("Geçersiz e-posta veya şifre", "danger")
             return redirect(url_for('guest.login_page'))
-    
+
     else:
         print("🛑 FORM HATALARI:", form.errors)
 

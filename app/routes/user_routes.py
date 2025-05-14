@@ -1,8 +1,11 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from app import db
-from app.models import Vehicle, Appointment, City, Dealership, MaintenanceType, User
+from app.models import Vehicle, Appointment, City, Dealership, MaintenanceType, User, Employee, EmployeeSchedule
 from datetime import datetime
+import random
+from datetime import timedelta
+
 
 bp = Blueprint('user', __name__)
 
@@ -104,6 +107,23 @@ def book_appointment():
 
             db.session.add(appointment)
             db.session.commit()
+
+            # Aynı bayideki çalışanları al
+            employees = Employee.query.filter_by(dealership_id=dealership_id).all()
+
+            if employees:
+                # Rastgele bir çalışan seç (daha sonra daha akıllı atama yapılabilir)
+                chosen_employee = random.choice(employees)
+
+                schedule = EmployeeSchedule(
+                    work_date=date_obj,
+                    start_time=time_obj,
+                    end_time=(datetime.combine(date_obj, time_obj) + timedelta(hours=1)).time(),  # örnek 1 saatlik
+                    employee_id=chosen_employee.employee_id,
+                    appointment_id=appointment.appointment_id
+                )
+                db.session.add(schedule)
+                db.session.commit()
 
             print("✅ Randevu eklendi:", appointment)
             flash("Randevu başarıyla oluşturuldu!", "success")
