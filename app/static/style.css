@@ -456,6 +456,12 @@ body {
     color: #004c6d;
 }
 
+.cancelled {
+  color: gray;
+  text-decoration: line-through;
+}
+
+
 /* Responsive */
 @media (max-width: 900px) {
     .dealership-container {

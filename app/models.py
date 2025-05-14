@@ -5,8 +5,10 @@ from app import db, login_manager
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
-
+    if user_id.startswith("e"):
+        return Employee.query.get(int(user_id[1:]))
+    else:
+        return User.query.get(int(user_id))
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -99,7 +101,7 @@ class Appointment(db.Model):
     type_id = db.Column(db.Integer, db.ForeignKey('maintenance_type.type_id', ondelete='CASCADE'), nullable=False)
 
 
-class Employee(db.Model):
+class Employee(UserMixin, db.Model):
     __tablename__ = 'employee'
 
     employee_id = db.Column(db.Integer, primary_key=True)
@@ -111,6 +113,9 @@ class Employee(db.Model):
     hire_date = db.Column(db.Date, nullable=False)
 
     dealership_id = db.Column(db.Integer, db.ForeignKey('dealership.dealership_id', ondelete='SET NULL'))
+    
+    def get_id(self):
+        return f"e{self.employee_id}"
 
 
 class EmployeeSchedule(db.Model):
@@ -123,3 +128,4 @@ class EmployeeSchedule(db.Model):
 
     employee_id = db.Column(db.Integer, db.ForeignKey('employee.employee_id', ondelete='CASCADE'))
     appointment_id = db.Column(db.Integer, db.ForeignKey('appointment.appointment_id', ondelete='SET NULL'))
+    appointment = db.relationship('Appointment', backref='schedules')
