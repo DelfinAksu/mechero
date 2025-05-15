@@ -8,11 +8,15 @@
 <body>
     <nav class="navbar">
 
+        <!-- Hamburger buton (mobilde görünür) -->
+
         <div class="nav-left">
             <a href="/" class="logo">Mechero</a>
         </div>
 
-        <div class="nav-right">
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+
+        <div class="nav-right" id="navMenu">
             <a href="/about">About</a> 
             <a href="/dealerships/">Dealership</a>
             <a href="/register">Register</a>
@@ -20,6 +24,13 @@
         </div>
 
     </nav>
+    <!-- Hamburger menü script -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("navMenu");
+            menu.classList.toggle("show");
+        }
+    </script>
     <main>
         {% block content %}{% endblock %}
     </main>
