@@ -1,0 +1,85 @@
+{% extends 'layout/base_admin.html' %}
+
+{% block content %}
+<h2>Most Preferred Maintenance Types in {{ month }}/{{ year }}</h2>
+
+<form method="get" style="margin-bottom: 1rem;">
+  <label>Month:</label>
+  <select name="month">
+    {% for m in range(1, 13) %}
+      <option value="{{ m }}" {% if m == month %}selected{% endif %}>{{ m }}</option>
+    {% endfor %}
+  </select>
+
+  <label>Year:</label>
+  <select name="year">
+    {% for y in range(2023, 2026) %}
+      <option value="{{ y }}" {% if y == year %}selected{% endif %}>{{ y }}</option>
+    {% endfor %}
+  </select>
+
+  <button type="submit">Filter</button>
+</form>
+
+{% if labels and values %}
+  <canvas id="chart" width="800" height="400"></canvas>
+
+  <!-- Chart.js & DataLabels Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+  <script>
+  const ctx = document.getElementById('chart');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: JSON.parse(`{{ labels | tojson | safe }}`),
+      datasets: [{
+        label: 'Number of Appointments',
+        data: JSON.parse(`{{ values | tojson | safe }}`),
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.6)',
+          'rgba(54, 162, 235, 0.6)',
+          'rgba(255, 206, 86, 0.6)',
+          'rgba(75, 192, 192, 0.6)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        datalabels: {
+          anchor: 'end',
+          align: 'top',
+          font: {
+            weight: 'bold'
+          }
+        },
+        title: {
+          display: true,
+          text: 'Distribution of Month {{ month }}/{{ year }} - Appointment'
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
+    plugins: [ChartDataLabels]
+  });
+</script>
+
+{% else %}
+  <p style="margin-top: 30px;"><strong>No appointment data found for {{ month }}/{{ year }} .</strong></p>
+{% endif %}
+{% endblock %}
+

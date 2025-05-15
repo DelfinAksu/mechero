@@ -1,0 +1,53 @@
+{% extends 'layout/base_admin.html' %}
+
+{% block content %}
+<h2>The cities with the highest number of appointments in {{ year }}</h2>
+
+<form method="get" style="margin-bottom: 1rem;">
+  <label>Select Year:</label>
+  <select name="year" onchange="this.form.submit()">
+    {% for y in range(2023, 2026) %}
+      <option value="{{ y }}" {% if y == year %}selected{% endif %}>{{ y }}</option>
+    {% endfor %}
+  </select>
+</form>
+
+{% if labels and values %}
+  <canvas id="chart" width="800" height="400"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('chart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: JSON.parse(`{{ labels | tojson | safe }}`),
+        datasets: [{
+          label: 'Number of Appointments',
+          data: JSON.parse(`{{ values | tojson | safe }}`),
+          backgroundColor: 'rgba(153, 102, 255, 0.6)',
+          borderColor: 'rgba(153, 102, 255, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Distribution of City - Appointment in {{ year }} '
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+{% else %}
+  <p><strong>No data found for {{ year }} .</strong></p>
+{% endif %}
+{% endblock %}

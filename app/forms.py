@@ -5,7 +5,6 @@ from wtforms import (
 )
 from wtforms.validators import DataRequired, Email, EqualTo, Length, NumberRange
 
-# 👤 Kullanıcı Kayıt Formu
 class RegisterForm(FlaskForm):
     fname = StringField('Ad', validators=[DataRequired(), Length(min=2, max=50)])
     lname = StringField('Soyad', validators=[DataRequired(), Length(min=2, max=50)])
@@ -15,13 +14,11 @@ class RegisterForm(FlaskForm):
     confirm_password = PasswordField('Şifre Tekrar', validators=[DataRequired(), EqualTo('password', message='Şifreler uyuşmuyor.')])
     submit = SubmitField('Kayıt Ol')
 
-# 🔐 Giriş Formu
 class LoginForm(FlaskForm):
     email = StringField('E-posta', validators=[DataRequired(), Email()])
     password = PasswordField('Şifre', validators=[DataRequired()])
     submit = SubmitField('Giriş Yap')
 
-# 🚗 Araç Kayıt Formu
 class VehicleForm(FlaskForm):
     plate_number = StringField('Plaka', validators=[DataRequired(), Length(max=20)])
     brand = StringField('Marka', validators=[DataRequired(), Length(max=50)])
@@ -37,7 +34,6 @@ class VehicleForm(FlaskForm):
     ], validators=[DataRequired()])
     submit = SubmitField('Aracı Kaydet')
 
-# 📅 Randevu Formu
 class AppointmentForm(FlaskForm):
     date = DateField('Tarih', validators=[DataRequired()])
     time = TimeField('Saat', validators=[DataRequired()])

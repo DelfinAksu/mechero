@@ -61,8 +61,12 @@ def login_page():
         user = User.query.filter_by(u_mail=email).first()
         if user and user.check_password(password):
             login_user(user)
-            flash("Giriş başarılı!", "success")
-            return redirect(url_for('user.dashboard'))
+            if user.u_mail == 'admin@admin.com':
+                flash("Admin girişi başarılı!", "success")
+                return redirect(url_for('admin.dashboard'))
+            else:
+                flash("Giriş başarılı!", "success")
+                return redirect(url_for('user.dashboard'))
         else:
             flash("Geçersiz e-posta veya şifre", "danger")
             return redirect(url_for('guest.login_page'))
