@@ -2,4 +2,10 @@
 
 {% block content %}
 <h1>Dashboard Page</h1>
+<a href="{{ url_for('admin.top_maintenance') }}">Most popular maintenance type per month</a>
+<a href="{{ url_for('admin.city_month_trends') }}">The months with the highest number of appointments in a city</a>
+<a href="{{ url_for('admin.top_cities') }}">The cities with the highest number of appointments</a>
+<a href="{{ url_for('admin.busiest_hours') }}">Peak hours for dealerships</a>
+<a href="{{ url_for('admin.employee_avg_hours') }}">Average Working Hours for Employee</a>
+
 {% endblock %}

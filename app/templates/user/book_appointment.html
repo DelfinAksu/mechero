@@ -2,7 +2,6 @@
 {% block content %}
 <div class="form-map-container">
 
-  <!-- Form Kutucuğu -->
   <div class="register-form">
       <h2 class="form-title">Yeni Randevu Al</h2>
       <form method="POST">
@@ -64,7 +63,6 @@
       </form>
   </div>
 
-  <!-- Harita Kutucuğu -->
   <div id="appointment-map"></div>
 
 </div>
@@ -73,10 +71,8 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<!-- JSON veriyi taşıyan gizli div -->
 <div id="dealership-data" data-json='{{ dealerships_json | tojson | safe }}'></div>
 
-<!-- Marker JS -->
 <script>
   const jsonData = document.getElementById('dealership-data').getAttribute('data-json');
   const dealershipData = JSON.parse(jsonData);

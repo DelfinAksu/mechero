@@ -1,0 +1,48 @@
+{% extends 'layout/base_admin.html' %}
+
+{% block content %}
+<h2>Peak Hours for Dealerships</h2>
+
+{% if labels and values %}
+  <canvas id="chart" width="800" height="400"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('chart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: JSON.parse(`{{ labels | tojson | safe }}`),
+        datasets: [{
+          label: 'Number of Appointments',
+          data: JSON.parse(`{{ values | tojson | safe }}`),
+          backgroundColor: 'rgba(255, 159, 64, 0.6)',
+          borderColor: 'rgba(255, 159, 64, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Appointment Booking Time-Based Density'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Number of Appointments' }
+          },
+          x: {
+            title: { display: true, text: 'Hour' }
+          }
+        }
+      }
+    });
+  </script>
+{% else %}
+  <p><strong>No registered appointments found for the selected time range.</strong></p>
+{% endif %}
+{% endblock %}

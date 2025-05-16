@@ -21,7 +21,6 @@
               <button type="submit" class="cancel-button">İptal Et</button>
             </form>
           {% elif appointment_time < current_time and a.status == 'Scheduled' %}
-            <!-- Completed'e otomatik geçir, bunu Python tarafında yapacağız -->
             <span class="status-auto">✔ Otomatik Tamamlandı</span>
           {% endif %}
         </div>

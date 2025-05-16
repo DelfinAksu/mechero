@@ -1,13 +1,13 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy # ORM (Object-Relational Mapper) via Flask-SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy 
 from config import Config
-from flask_login import LoginManager # identity validation
+from flask_login import LoginManager 
 
-db = SQLAlchemy() # these are global objects, define before app
+db = SQLAlchemy() 
 login_manager = LoginManager()
 
 
-def create_app(): # application factory
+def create_app(): 
     app = Flask(__name__)
     app.config.from_object(Config)
     db.init_app(app)

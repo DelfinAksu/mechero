@@ -20,16 +20,15 @@ class User(UserMixin, db.Model):
     u_mail = db.Column(db.String(100), unique=True, nullable=False)
     u_password = db.Column(db.String(255), nullable=False)
     u_created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    u_updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     vehicles = db.relationship('Vehicle', backref='user', cascade="all, delete-orphan")
     appointments = db.relationship('Appointment', backref='user', cascade="all, delete-orphan")
 
     def set_password(self, password):
-        self.u_password = generate_password_hash(password)
+        self.u_password = password
 
     def check_password(self, password):
-        return check_password_hash(self.u_password, password)
+        return self.u_password == password
 
     def get_id(self):
         return str(self.user_id)
@@ -47,11 +46,9 @@ class Vehicle(db.Model):
     km = db.Column(db.Integer, nullable=False)
     ownership_count = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id', ondelete='CASCADE'), nullable=False)
     appointments = db.relationship('Appointment', backref='vehicle', cascade="all, delete-orphan")
-
 
 class City(db.Model):
     __tablename__ = 'city'
@@ -60,7 +57,6 @@ class City(db.Model):
     city_name = db.Column(db.String(25), nullable=False)
 
     dealerships = db.relationship('Dealership', backref='city', cascade="all, delete-orphan")
-
 
 class Dealership(db.Model):
     __tablename__ = 'dealership'
@@ -76,7 +72,6 @@ class Dealership(db.Model):
     appointments = db.relationship('Appointment', backref='dealership', cascade="all, delete-orphan")
     employees = db.relationship('Employee', backref='dealership')
 
-
 class MaintenanceType(db.Model):
     __tablename__ = 'maintenance_type'
 
@@ -84,7 +79,6 @@ class MaintenanceType(db.Model):
     type_name = db.Column(db.String(50), nullable=False)
 
     appointments = db.relationship('Appointment', backref='maintenance_type', cascade="all, delete-orphan")
-
 
 class Appointment(db.Model):
     __tablename__ = 'appointment'
@@ -99,7 +93,6 @@ class Appointment(db.Model):
     vehicle_id = db.Column(db.Integer, db.ForeignKey('vehicle.vehicle_id', ondelete='CASCADE'), nullable=False)
     dealership_id = db.Column(db.Integer, db.ForeignKey('dealership.dealership_id', ondelete='CASCADE'), nullable=False)
     type_id = db.Column(db.Integer, db.ForeignKey('maintenance_type.type_id', ondelete='CASCADE'), nullable=False)
-
 
 class Employee(UserMixin, db.Model):
     __tablename__ = 'employee'
