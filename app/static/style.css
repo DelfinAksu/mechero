@@ -3,7 +3,8 @@ body {
     margin: 0;
     background-color: #fafafa;
     font-family: Arial, sans-serif;
-}
+}*/
+
 /* Navbar*/ 
 .navbar {
     display: flex;
@@ -545,182 +546,456 @@ main {
 
 
 
-/*About Us Sayfası*/
+    /*About Us Sayfası*/
 
-/* Genel container */
-.about-container {
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    text-align: center;
+.founder-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #ffffff;
+  padding: 60px 40px;
+  margin: 50px auto;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1200px;
 }
 
-/* Giriş ve misyon paragrafları */
-.about-intro, .about-mission {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #004c6d;
-    margin-bottom: 30px;
-}
-.about-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
-    margin: 60px;
-    flex-wrap: wrap;
+.founder-images img {
+  max-width: 500px;
+  padding: 0 40px;
+  border-radius: 12px;
 }
 
-.about-left {
-    flex: 1;
-    min-width: 320px;
+.founder-info {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+  max-width: 500px;
 }
 
-.about-right {
-    flex: 1;
-    min-width: 320px;
-    display: flex;
+.founder-desc {
+  font-size: 16px;
+  color: #333;
+  margin: 0 auto 20px auto;
+  max-width: 700px;
+  padding: 0 100px;
+}
+
+.founder-profiles {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.profile {
+  text-align: center;
+}
+
+.profile img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 5px solid #004c6d;
+}
+
+.profile p {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.social-icons {
+  margin-top: 5px;
+}
+
+.social-icons i {
+  margin: 0 6px;
+  font-size: 18px;
+  color: #004c6d;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .founder-section {
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding: 30px 20px;
+    margin: 20px;
+    gap: 30px;
+  }
+
+  .founder-images img {
+    max-width: 90%;
+  }
+
+  .founder-desc {
+    padding: 0 20px;
+    margin: 0 auto 20px auto;
+  }
+
+  .founder-profiles {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .profile img {
+    width: 80px;
+    height: 80px;
+  }
+}
+.mission-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e6e6e6;
+  padding: 60px 40px;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
-.about-right img {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    object-fit: cover;
+.mission-text {
+  flex: 1;
+  max-width: 600px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #003153; /* Lacivertimsi */
 }
 
-/* Responsive */
-@media (max-width: 900px) {
+.mission-text p {
+  margin-bottom: 20px;
+}
+
+.mission-image {
+  flex: 1;
+  max-width: 500px;
+}
+
+.mission-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 768px) {
+  .mission-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .mission-text {
+    padding: 0 10px;
+  }
+
+  .mission-image {
+    max-width: 100%;
+  }
+}
+
+
+.stats-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  gap: 60px;
+  background-color: #ffffff;
+  flex-wrap: wrap;
+}
+
+.stats-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.stats-text {
+  flex: 1;
+  max-width: 500px;
+  text-align: left;
+  color: #003153;
+}
+
+.stats-text h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #0a214f;
+  margin-bottom: 10px;
+}
+
+.stats-text h3 {
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+.stats-text p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .stats-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .stats-text {
+    text-align: center;
+  }
+
+  .stats-image img {
+    max-width: 90%;
+  }
+}
+
+.team-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e6e6e6;
+  padding: 60px 40px;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.team-text {
+  flex: 1;
+  max-width: 500px;
+  text-align: left;
+  color: #003153;
+}
+
+.team-text h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #0a214f;
+  margin-bottom: 10px;
+}
+
+.team-text h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.team-text p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.team-image {
+  flex: 1;
+  max-width: 500px;
+}
+
+.team-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 768px) {
+  .team-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .team-text {
+    text-align: center;
+  }
+
+  .team-image img {
+    max-width: 90%;
+  }
+}
+
+
+
+
+
+
+
+
+
+    /* Genel container */
+/*    .about-container {
+        max-width: 1000px;
+        margin: 50px auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    /* Giriş ve misyon paragrafları */
+/*    .about-intro, .about-mission {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #004c6d;
+        margin-bottom: 30px;
+    }
     .about-wrapper {
-        flex-direction: column;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 40px;
+        margin: 60px;
+        flex-wrap: wrap;
+    }
+
+    .about-left {
+        flex: 1;
+        min-width: 320px;
+    }
+
+    .about-right {
+        flex: 1;
+        min-width: 320px;
+        display: flex;
         align-items: center;
+        justify-content: center;
     }
 
     .about-right img {
-        max-width: 90%;
-    }
-}
-@media (max-width: 768px) {
-    .stat-circle {
-        width: 90%;
-        height: auto;
+        width: 100%;
+        max-width: 500px;
         border-radius: 20px;
-        padding: 30px;
-        margin: 10px 0;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        object-fit: cover;
     }
 
-    .stat-circle h2 {
-        font-size: 24px;
+    /* Responsive */
+/*    @media (max-width: 900px) {
+        .about-wrapper {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-right img {
+            max-width: 90%;
+        }
     }
-}
+    @media (max-width: 768px) {
+        .stat-circle {
+            width: 90%;
+            height: auto;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 10px 0;
+        }
 
-/* İstatistikler kısmı */
-.about-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-    justify-items: center;
-}
+        .stat-circle h2 {
+            font-size: 24px;
+        }
+    }
 
-/* Daireler */
-.stat-circle {
-    width: 400px;
-    height: 300px;
-    border-radius: 50%;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
+    /* İstatistikler kısmı */
+ /*   .about-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+        justify-items: center;
+    }
 
-.stat-circle.light {
-    background-color: #66b3ff;
-    color: #003f8a;
-    z-index: 2;
-}
+    /* Daireler */
+/*    .stat-circle {
+        width: 400px;
+        height: 300px;
+        border-radius: 50%;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        position: relative;
+        z-index: 1;
+        text-align: center;
+    }
 
-.stat-circle.medium {
-    background-color: #3399ff;
-    color: white;
-    z-index: 3;
-}
+    .stat-circle.light {
+        background-color: #66b3ff;
+        color: #003f8a;
+        z-index: 2;
+    }
 
-.stat-circle.dark {
-    background-color: #002f5f;
-    color: white;
-    z-index: 4;
-}
+    .stat-circle.medium {
+        background-color: #3399ff;
+        color: white;
+        z-index: 3;
+    }
 
-/* Başlıklar içeride */
-.stat-circle h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
+    .stat-circle.dark {
+        background-color: #002f5f;
+        color: white;
+        z-index: 4;
+    }
 
-.stat-circle p {
-    margin: 5px 0;
-    font-weight: bold;
-}
+    /* Başlıklar içeride */
+/*    .stat-circle h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
 
-.stat-circle span {
-    font-size: 12px;
-    margin-top: 10px;
-    text-align: center;
-    padding: 0 40px; 
+    .stat-circle p {
+        margin: 5px 0;
+        font-weight: bold;
+    }
 
-}
-.founders {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 10px;
-    gap: 0;
-}
+    .stat-circle span {
+        font-size: 12px;
+        margin-top: 10px;
+        text-align: center;
+        padding: 0 40px; 
 
-.founder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-}
+    }
+    .founders {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+        gap: 0;
+    }
 
-.founder p {
-    margin: 5px 0;
-    font-weight: bold;
-}
+    .founder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+    }
+
+    .founder p {
+        margin: 5px 0;
+        font-weight: bold;
+    }
 
 
-.founder-icon {
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    border-radius: 50%;
-}
-.founder-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid #fff;
-}
+    .founder-icon {
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        border-radius: 50%;
+    }
+    .founder-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #fff;
+    }
 
-.founder-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
+    .founder-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+*/
 
 
 

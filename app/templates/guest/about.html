@@ -1,7 +1,97 @@
 {% extends 'layout/base_guest.html' %}
 
 {% block content %}
+<div class="about-container">
+    <div class="founder-section">
+    <div class="founder-images">
+        <img src="{{ url_for('static', filename='images/founder-collage.png') }}" alt="Founder collage">
+    </div>
 
+    <div class="founder-info">
+        <p class="founder-desc">
+        MecHero was founded by Miray Topcu and Delfin Aksu, driven by their passion for technology and innovation.  
+        They have shaped MecHero into a trusted, customer-focused car care brand.
+        </p>
+
+        <div class="founder-profiles">
+        <div class="profile">
+            <img src="{{ url_for('static', filename='images/delfin.jpeg') }}" alt="Delfin Aksu">
+            <p>Delfin Aksu</p>
+            <div class="social-icons">
+            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-github"></i>
+            <i class="fab fa-mail"></i>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img src="{{ url_for('static', filename='images/miray.jpeg') }}" alt="Miray Topcu">
+            <p>Miray Topcu</p>
+            <div class="social-icons">
+            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-github"></i>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+
+<div class="mission-section">
+  <div class="mission-text">
+    <p>
+      At MecHero, we are passionate about making car maintenance simple, transparent, and accessible for everyone.
+      We believe that vehicle owners should spend less time worrying about repairs and more time enjoying the road.
+    </p>
+    <p>
+      Our mission is to connect drivers with top-rated service centers, ensuring every car receives expert care —
+      from routine check-ups to major repairs. We've built a seamless online platform where you can book, track, and
+      manage your vehicle’s appointments all in one place.
+    </p>
+  </div>
+  <div class="mission-image">
+    <img src="{{ url_for('static', filename='images/sıralı-arabalar.jpg') }}" alt="Luxury Car">
+  </div>
+</div>
+
+
+
+<div class="stats-section">
+  <div class="stats-image">
+    <img src="{{ url_for('static', filename='images/garage.jpg') }}" alt="Service Garage">
+  </div>
+  <div class="stats-text">
+    <h2>243</h2>
+    <h3>Service Centers</h3>
+    <p>
+      We proudly partner with three authorized dealerships in every city across the country, 
+      ensuring you always have expert service within reach — no matter where you are.
+    </p>
+  </div>
+</div>
+
+
+
+<div class="team-section">
+  <div class="team-text">
+    <h2>486</h2>
+    <h3>Team Members</h3>
+    <p>
+      Behind MecHero’s success stands a passionate and dedicated team of 324 professionals.  
+      From skilled mechanics to customer service experts, every one of our employees is committed to delivering  
+      top-quality service and ensuring your satisfaction at every step.
+    </p>
+  </div>
+  <div class="team-image">
+    <img src="{{ url_for('static', filename='images/repairman.jpg') }}" alt="Mechanic Working">
+  </div>
+</div>
+
+
+
+<!--
 <div class="about-container">
     <div class="about-wrapper">
         <div class="about-left">
@@ -54,7 +144,7 @@
     </div>
 </div>
 
-<!--
+
     <div class="about-page">
         
         <p>At MecHero, we are passionate about making car maintenance simple, transparent, and accessible for everyone. We believe that vehicle owners should spend less time worrying about repairs and more time enjoying the road.</p>
