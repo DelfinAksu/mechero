@@ -9,7 +9,7 @@
 
     <!-- Üstteki görselli karşılama -->
     <div class="dashboard-header">
-        <img src="{{ url_for('static', filename='images/Dashboard.jpg') }}" alt="Dashboard Banner">
+        <img src="{{ url_for('static', filename='images/Dashboard.jpg') }}" alt="Dashboard Banner" class="dashboard-image" >
         <h2 class="dashboard-message">Hoş geldin, {{ user.u_fname }}!</h2>
     </div>
 
@@ -22,6 +22,12 @@
             <button type="submit" class="dashboard-logout-button">Çıkış Yap</button>
         </form>
     </div>
+
+    <script>
+        window.addEventListener("load", function () {
+            document.body.classList.add("loaded");
+        });    
+    </script>
 
 </body>
 </html>

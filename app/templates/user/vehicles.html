@@ -1,11 +1,14 @@
 {% extends 'layout/base_user.html' %}
 {% block content %}
+<div class="vehicles-banner-wrapper">
+    <img src="{{ url_for('static', filename='images/vehicles.jpg') }}" alt="Araçlar" class="banner-cropped-img">
+  </div>
 <div class="vehicles-page">
   <h2 class="vehicles-title">Araçlarım</h2>
   <ul class="vehicles-list">
     {% for v in vehicles %}
       <li class="vehicle-item">
-        {{ v.brand }} {{ v.model }} - {{ v.plate_number }}
+        <span>{{ v.brand }} {{ v.model }} - {{ v.plate_number }}</span>
         <form method="POST"
           action="{{ url_for('user.delete_vehicle', vehicle_id=v.vehicle_id) }}"
           style="display:inline;"

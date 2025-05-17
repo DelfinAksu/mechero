@@ -252,10 +252,27 @@ main {
 /* Araçlar sayfası */
 .vehicles-page {
     max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
+    margin: 0 auto 50px auto;
+    /*padding: 20px;*/
     text-align: center;
 }
+
+.vehicles-banner-wrapper {
+  width: 100%;
+  height: 400px;           /* Görünmesini istediğin yükseklik */
+  overflow: hidden;        /* Taşan kısmı gizle */
+  position: relative;
+  margin-bottom: 0;
+}
+
+.banner-cropped-img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  position: relative;
+  top: -150px;             /* Yukarıdan kırpmak için kaydır */
+}
+
 
 /* Başlık */
 .vehicles-title {
@@ -271,11 +288,20 @@ main {
 }
 
 .vehicle-item {
-    background-color: #c4e1f0; /* açık mavi kutucuk */
+    background-color: white; /* açık mavi kutucuk */
     color: #004c6d;
     margin: 10px 0;
-    padding: 10px;
-    border-radius: 4px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* Yazı (araç bilgisi) kısmı */
+.vehicle-item span {
+    font-weight: 500;
+    font-size: 16px;
 }
 
 /* Yeni araç ekle butonu */
@@ -386,10 +412,11 @@ main {
 
 /* Randevular sayfası */
 .appointments-page {
-    width: 350px;
+    max-width: 1200px;
     margin: 80px auto;
     padding: 20px;
     text-align: center;
+    padding-bottom: 100px;
 }
 
 /* Başlık */
@@ -400,28 +427,49 @@ main {
 
 /* Liste */
 .appointments-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
 .appointment-item {
-    background-color: #dff6ff; /* açık mavi kutucuk */
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 4px;
+    background-color: #dff6ff;
+    padding: 15px;
+    border-radius: 8px;
     color: #0056b3;
+    width: 280px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
 }
+.cancel-button {
+    margin-top: 10px;
+    padding: 6px 12px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+    background-color: #cc0000;
+}
+
 
 /* Buton */
 .add-appointment-button {
     display: inline-block;
     background-color: #0056b3;
     color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 14px 28px;
+    border-radius: 6px;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 40px;
     transition: background-color 0.3s;
 }
 
@@ -862,6 +910,16 @@ main {
     top: 50%;
     transform: translateY(-50%);
 }
+/* Sayfa yüklenirken resim sonradan geliyor*/
+.dashboard-image {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+body.loaded .dashboard-image {
+    opacity: 1;
+}
+
 
 
 /* Altındaki buton/menü kısmı */
