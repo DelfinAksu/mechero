@@ -78,6 +78,7 @@ def city_month_trends():
                            selected_city=city_id,
                            cities=cities)
 
+
 #The cities with the highest number of appointments
 @bp.route('/admin/top-cities', methods=['GET'])
 def top_cities():
@@ -116,6 +117,7 @@ def busiest_hours():
     return render_template("admin/busiest_hours.html",
                            labels=labels,
                            values=values)
+
 
 #Average Working Hours for Employee
 @bp.route('/admin/employee-avg-hours')

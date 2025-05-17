@@ -6,14 +6,14 @@ from flask_login import login_user, logout_user, current_user, login_required
 
 bp = Blueprint('guest', __name__)
 
-# 👤 Kullanıcı Kayıt
+# Register Part
 @bp.route('/register', methods=['GET', 'POST'])
 def register_page():
     form = RegisterForm()
     if form.validate_on_submit():
         existing_user = User.query.filter_by(u_mail=form.email.data).first()
         if existing_user:
-            flash("Bu e-posta adresi zaten kayıtlı!", "danger")
+            flash("This email address is already registered!", "danger")
             return redirect(url_for('guest.register_page'))
 
         try:
@@ -26,14 +26,15 @@ def register_page():
             user.set_password(form.password.data)
             db.session.add(user)
             db.session.commit()
-            flash("Kayıt başarılı! Giriş yapabilirsiniz.", "success")
+            flash("Registration successful! You can now log in.", "success")
             return redirect(url_for('guest.login_page'))
         except Exception as e:
             db.session.rollback()
-            flash(f"Kayıt sırasında bir hata oluştu: {e}", "danger")
+            flash(f"An error occurred during registration: {e}", "danger")
 
     return render_template('guest/register.html', form=form)
 
+#Login Part
 @bp.route('/login', methods=['GET', 'POST'])
 def login_page():
     form = LoginForm()
@@ -42,49 +43,50 @@ def login_page():
         email = form.email.data
         password = form.password.data
 
-        # Eğer çalışan girişi ise
+        # Employee Login
         if email.endswith('@mechero.com'):
             try:
                 emp_id = int(email.split('@')[0])
                 employee = Employee.query.filter_by(employee_id=emp_id).first()
                 if employee and password == str(employee.employee_id):
                     login_user(employee)
-                    flash("Çalışan girişi başarılı!", "success")
+                    flash("Employee login successful!", "success")
                     return redirect(url_for('employee.dashboard'))
                 else:
-                    flash("Geçersiz çalışan bilgileri", "danger")
+                    flash("Invalid employee informations.", "danger")
             except:
-                flash("Hatalı çalışan e-posta formatı", "danger")
+                flash("Invalid employee email format.", "danger")
             return redirect(url_for('guest.login_page'))
 
-        # Eğer normal kullanıcı ise
+        # User Login
         user = User.query.filter_by(u_mail=email).first()
         if user and user.check_password(password):
             login_user(user)
+            # Admin Login
             if user.u_mail == 'admin@admin.com':
-                flash("Admin girişi başarılı!", "success")
+                flash("Admin login successful!", "success")
                 return redirect(url_for('admin.dashboard'))
             else:
-                flash("Giriş başarılı!", "success")
+                flash("User login successful!", "success")
                 return redirect(url_for('user.dashboard'))
         else:
-            flash("Geçersiz e-posta veya şifre", "danger")
+            flash("Invalid e-mail or password", "danger")
             return redirect(url_for('guest.login_page'))
 
     else:
-        print("🛑 FORM HATALARI:", form.errors)
+        print("FORM ERRORS:", form.errors)
 
     return render_template('guest/login.html', form=form)
 
-# 🚪 Çıkış
+# Logout Part
 @bp.route('/logout')
 @login_required
 def logout_page():
     logout_user()
-    flash("Başarıyla çıkış yapıldı.", "info")
+    flash("Successfully logged out.", "info")
     return redirect(url_for('guest.login_page'))
 
-# 🚗 Bayi Listeleme (Haritalı)
+# Dealerships List Part
 @bp.route('/dealerships/')
 def list_dealerships():
     city_id = request.args.get('city_id')
@@ -115,10 +117,12 @@ def list_dealerships():
         selected_city_id=city_id
     )
 
+#About us Part
 @bp.route('/about')
 def about_page():
     return render_template('guest/about.html')
 
+#Index Part
 @bp.route('/')
 def index_page():
     return render_template('guest/index.html')
