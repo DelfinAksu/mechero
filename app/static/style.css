@@ -612,6 +612,15 @@ main {
 
 
     /*About Us Sayfası*/
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  padding: 40px 20px;
+  background-color: #fafafa;
+}
+
 
 .founder-section {
   display: flex;
@@ -1018,7 +1027,7 @@ body.loaded .dashboard-image {
 }
 
 /* Main content */
-main {
+.admin-layout main {
     display: flex;
 }
 
@@ -1083,7 +1092,7 @@ main {
     padding-bottom: 5px;
     border-bottom: 1px solid #bbb;
 }
-main {
+.admin-layout main {
     margin-left: 280px;
     padding: 40px;
 
