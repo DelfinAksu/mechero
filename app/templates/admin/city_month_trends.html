@@ -1,11 +1,12 @@
 {% extends 'layout/base_admin.html' %}
 
 {% block content %}
-<h2>The months with the highest number of appointments in a city</h2>
 
-<form method="get">
-  <label>Select City:</label>
-  <select name="city_id" onchange="this.form.submit()">
+<h2 class="chart-title">The Months with the Highest Number of Appointments in the City </h2>
+
+<form method="get" class="city-select-form">
+  <label for="city">Select City:</label>
+  <select name="city_id" id="city" onchange="this.form.submit()">
     {% for c in cities %}
       <option value="{{ c.city_id }}" {% if c.city_id == selected_city %}selected{% endif %}>
         {{ c.city_name }}
@@ -54,4 +55,5 @@
 {% else %}
   <p>No data found for the selected city.</p>
 {% endif %}
+
 {% endblock %}

@@ -2,13 +2,32 @@
 <html lang="en">
 <head>
     <title>{% block title %}Admin{% endblock %}</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <nav>
-        <a href="/admin/dashboard">Dashboard</a> 
-    </nav>
+    <header class="admin-header">
+        <a href="{{ url_for('admin.dashboard') }}" class="logo">MecHero </a>
+        <form action="{{ url_for('guest.logout_page') }}" method="POST" >
+            <button type="submit" class="logout-button">Çıkış Yap</button>
+        </form>
+    </header>
+    <div class="admin-sidebar">
+        <h3 class="sidebar-title">Graphs:</h3>
+
+        <a href="{{ url_for('admin.top_maintenance') }}"class="{% if request.endpoint == 'admin.top_maintenance' %}active{% endif %}">Most Popular Maintenance Type per Month</a>
+        <a href="{{ url_for('admin.city_month_trends') }}"class="{% if request.endpoint == 'admin.city_month_trends' %}active{% endif %}">The Months with the Highest Number of Appointments in the City</a>
+        <a href="{{ url_for('admin.top_cities') }}"class="{% if request.endpoint == 'admin.top_cities' %}active{% endif %}">The Cities with the Highest Number of Appointments</a>
+        <a href="{{ url_for('admin.busiest_hours') }}"class="{% if request.endpoint == 'admin.busiest_hours' %}active{% endif %}">Peak Hours for Dealerships</a>
+        <a href="{{ url_for('admin.employee_avg_hours') }}"class="{% if request.endpoint == 'admin.employee_avg_hours' %}active{% endif %}">Average Working Hours for Employee</a>
+    </div>
+    
+
     <main>
-        {% block content %}{% endblock %}
+        <div class="admin-content">
+            {% block content %}{% endblock %}
+        </div>
     </main>
 </body>
 </html>
