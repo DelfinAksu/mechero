@@ -79,7 +79,7 @@ def login_page():
     return render_template('guest/login.html', form=form)
 
 # Logout Part
-@bp.route('/logout')
+@bp.route('/logout', methods=['GET', 'POST'])
 @login_required
 def logout_page():
     logout_user()
