@@ -1,6 +1,53 @@
-{% extends 'layout/base_user.html' %}
-{% block content %}
-<div class="dashboard-container">
-    <h2 class="dashboard-message">Merhaba, {{ user.u_fname }}!</h2>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>MecHero Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Üstteki görselli karşılama -->
+    <div class="dashboard-header">
+        <img src="{{ url_for('static', filename='images/Dashboard.jpg') }}" alt="Dashboard Banner">
+        <h2 class="dashboard-message">Hoş geldin, {{ user.u_fname }}!</h2>
+    </div>
+
+    <!-- Alt menü -->
+    <div class="dashboard-nav">
+        <a href="{{ url_for('user.vehicles') }}">Araçlarım</a>
+        <a href="{{ url_for('user.appointments') }}">Randevularım</a>
+        <a href="{{ url_for('user.profile') }}">Profilim</a>
+        <form action="{{ url_for('guest.logout_page') }}" method="POST" style="display:inline;">
+            <button type="submit" class="dashboard-logout-button">Çıkış Yap</button>
+        </form>
+    </div>
+
+</body>
+</html>
+
+{#
+    {% extends 'layout/base_user.html' %}
+    {% block content %}
+    <div class="dashboard-header">
+        <div class="overlay-text">
+            <img src="{{ url_for('static', filename='images/Dashboard.jpg') }}" alt="Dashboard Banner">
+            <h2 class="dashboard-message">Hoş geldin, {{ user.u_fname }}</h2>
+        </div>
+    </div>
+
+    <div class="dashboard-nav">
+        <a href="{{ url_for('user.vehicles') }}">Araçlarım</a>
+        <a href="{{ url_for('user.appointments') }}">Randevularım</a>
+        <a href="{{ url_for('user.profile') }}">Profilim</a>
+        <a href="{{ url_for('guest.logout_page') }}" class="logout-button">Çıkış Yap</a>
+    </div>
+    
+        <div class="dashboard-container">
+        <h2 class="dashboard-message">Hoş geldin, {{ user.u_fname }}!</h2>
+    </div>
+    {% endblock %}
+#}
+
+    
+
