@@ -7,19 +7,17 @@
 </head>
 <body>
 
-    <!-- Üstteki görselli karşılama -->
     <div class="dashboard-header">
         <img src="{{ url_for('static', filename='images/Dashboard.jpg') }}" alt="Dashboard Banner" class="dashboard-image" >
-        <h2 class="dashboard-message">Hoş geldin, {{ user.u_fname }}!</h2>
+        <h2 class="dashboard-message">Welcome, {{ user.u_fname }}!</h2>
     </div>
 
-    <!-- Alt menü -->
     <div class="dashboard-nav">
-        <a href="{{ url_for('user.vehicles') }}">Araçlarım</a>
-        <a href="{{ url_for('user.appointments') }}">Randevularım</a>
-        <a href="{{ url_for('user.profile') }}">Profilim</a>
+        <a href="{{ url_for('user.vehicles') }}">My Vehicle</a>
+        <a href="{{ url_for('user.appointments') }}">My Appointments</a>
+        <a href="{{ url_for('user.profile') }}">My Profile</a>
         <form action="{{ url_for('guest.logout_page') }}" method="POST" style="display:inline;">
-            <button type="submit" class="dashboard-logout-button">Çıkış Yap</button>
+            <button type="submit" class="dashboard-logout-button">Log Out</button>
         </form>
     </div>
 
@@ -38,19 +36,19 @@
     <div class="dashboard-header">
         <div class="overlay-text">
             <img src="{{ url_for('static', filename='images/Dashboard.jpg') }}" alt="Dashboard Banner">
-            <h2 class="dashboard-message">Hoş geldin, {{ user.u_fname }}</h2>
+            <h2 class="dashboard-message">Welcome, {{ user.u_fname }}</h2>
         </div>
     </div>
 
     <div class="dashboard-nav">
-        <a href="{{ url_for('user.vehicles') }}">Araçlarım</a>
-        <a href="{{ url_for('user.appointments') }}">Randevularım</a>
-        <a href="{{ url_for('user.profile') }}">Profilim</a>
-        <a href="{{ url_for('guest.logout_page') }}" class="logout-button">Çıkış Yap</a>
+        <a href="{{ url_for('user.vehicles') }}">My Vehicle</a>
+        <a href="{{ url_for('user.appointments') }}">My Appointments</a>
+        <a href="{{ url_for('user.profile') }}">My Profile</a>
+        <a href="{{ url_for('guest.logout_page') }}" class="logout-button">Log Out</a>
     </div>
     
         <div class="dashboard-container">
-        <h2 class="dashboard-message">Hoş geldin, {{ user.u_fname }}!</h2>
+        <h2 class="dashboard-message">Welcome, {{ user.u_fname }}!</h2>
     </div>
     {% endblock %}
 #}

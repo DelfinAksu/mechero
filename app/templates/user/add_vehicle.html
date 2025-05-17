@@ -1,10 +1,10 @@
 {% extends 'layout/base_user.html' %}
 {% block content %}
 <div class="add-vehicle-form">
-  <h2 class="form-title">Yeni Araç Ekle</h2>
+  <h2 class="form-title">Add New Vehicle</h2>
   <form method="POST">
       <div class="form-field">
-          <label>Marka:</label>
+          <label>Brand:</label>
           <input name="brand" type="text" required>
       </div>
       <div class="form-field">
@@ -12,15 +12,15 @@
           <input name="model" type="text" required>
       </div>
       <div class="form-field">
-          <label>Plaka:</label>
+          <label>Plate Number:</label>
           <input name="plate_number" type="text" required>
       </div>
       <div class="form-field">
-          <label>Model Yılı:</label>
+          <label>Model Year:</label>
           <input name="year" type="number" required>
       </div>
       <div class="form-field">
-          <label>Yakıt Türü:</label>
+          <label>Fuel Type:</label>
           <select name="fuel_type" required>
               <option value="Gas">Gas</option>
               <option value="Diesel">Diesel</option>
@@ -29,20 +29,20 @@
           </select>
       </div>
       <div class="form-field">
-          <label>Kilometre:</label>
+          <label>Kilometer:</label>
           <input name="mileage" type="number" required>
       </div>
       <div class="form-field">
-          <label>Kaçıncı El:</label>
+          <label>Ownership Count:</label>
           <select name="ownership_count" required>
-              <option value="1">1. El</option>
-              <option value="2">2. El</option>
-              <option value="3">3. El</option>
-              <option value="4">4. El</option>
-              <option value="5">5. El</option>
+              <option value="1">1. Hand</option>
+              <option value="2">2. Hand</option>
+              <option value="3">3. Hand</option>
+              <option value="4">4. Hand</option>
+              <option value="5">5. Hand</option>
           </select>
       </div>
-      <button type="submit" class="submit-button">Kaydet</button>
+      <button type="submit" class="submit-button">Save</button>
   </form>
 </div>
 {% endblock %}

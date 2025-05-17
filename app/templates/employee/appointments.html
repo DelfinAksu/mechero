@@ -1,23 +1,22 @@
 {% extends "layout/base_employee.html" %}
 {% block content %}
 
-<h2 class="appointments-title">Randevularım</h2>
+<h2 class="appointments-title">Appointments</h2>
 
-<!-- 📌 ÖZET BİLGİLER -->
 <div class="appointment-summary-bar">
   {% for a in appointments %}
     <div class="summary-card">
       <strong>{{ a.a_date }} – {{ a.a_time.strftime('%H:%M') }}</strong><br>
-      Araç: {{ a.vehicle.brand }} {{ a.vehicle.model }}<br>
-      Müşteri: {{ a.user.u_fname }} {{ a.user.u_lname }}<br>
-      Tür: {{ a.maintenance_type.type_name }}
+      Vehicle: {{ a.vehicle.brand }} {{ a.vehicle.model }}<br>
+      Customer: {{ a.user.u_fname }} {{ a.user.u_lname }}<br>
+      Type: {{ a.maintenance_type.type_name }}
     </div>
   {% else %}
-    <p>Henüz atanmış randevunuz yok.</p>
+    <p>You don't have any assigned appointments yet.</p>
   {% endfor %}
 </div>
 
-<!-- 🗓️ TAKVİM -->
+
 <div id="calendar"></div>
 
 <!-- FullCalendar CSS & JS -->
@@ -36,7 +35,6 @@
       },
       events: '/employee/appointments/json',
 
-      // 👇 BURAYA TAŞINIYOR
       eventClick: function(info) {
         const props = info.event.extendedProps;
         document.getElementById("modal-date").textContent = props.date;
@@ -86,16 +84,16 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Randevu Detayları</h5>
+        <h5 class="modal-title">Appointment Details</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
       </div>
       <div class="modal-body">
-        <p><strong>Tarih:</strong> <span id="modal-date"></span></p>
-        <p><strong>Saat:</strong> <span id="modal-time"></span></p>
-        <p><strong>Müşteri:</strong> <span id="modal-customer"></span></p>
-        <p><strong>Araç Plaka:</strong> <span id="modal-plate"></span></p>
-        <p><strong>Bakım Türü:</strong> <span id="modal-type"></span></p>
-        <p><strong>Fiyat:</strong> <span id="modal-price"></span></p>
+        <p><strong>Date:</strong> <span id="modal-date"></span></p>
+        <p><strong>Hour:</strong> <span id="modal-time"></span></p>
+        <p><strong>Customer:</strong> <span id="modal-customer"></span></p>
+        <p><strong>Plate:</strong> <span id="modal-plate"></span></p>
+        <p><strong>Type:</strong> <span id="modal-type"></span></p>
+        <p><strong>Price:</strong> <span id="modal-price"></span></p>
       </div>
     </div>
   </div>

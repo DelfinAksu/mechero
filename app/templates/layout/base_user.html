@@ -13,13 +13,13 @@
     </div>
     <div class="nav-right">
         {% if current_user.is_authenticated %}
-            <a href="{{ url_for('user.vehicles') }}">Araçlarım</a>
-            <a href="{{ url_for('user.appointments') }}">Randevularım</a>
+            <a href="{{ url_for('user.vehicles') }}">Vehicles</a>
+            <a href="{{ url_for('user.appointments') }}">Appointments</a>
             <a href="{{ url_for('user.profile') }}">Profile</a>
-            <a href="{{ url_for('guest.logout_page') }}" class="logout-button">Çıkış Yap</a>
+            <a href="{{ url_for('guest.logout_page') }}" class="logout-button">Log Out</a>
         {% else %}
-            <a href="{{ url_for('guest.login_page') }}">Giriş</a>
-            <a href="{{ url_for('guest.register_page') }}">Kayıt</a>
+            <a href="{{ url_for('guest.login_page') }}">Log In</a>
+            <a href="{{ url_for('guest.register_page') }}">Register</a>
         {% endif %}
     </div>
 </nav>

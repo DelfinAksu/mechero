@@ -2,17 +2,14 @@
 
 {% block content %}
 <div class="dealership-container">
-
-  <!-- Sol kutu: Şehir ve bayi listesi -->
   <div class="dealership-list-box">
-      <h2 class="form-title">Bayilerimiz</h2>
+      <h2 class="form-title">Our Dealerships</h2>
 
-      <!-- Şehir Seçimi -->
       <form method="GET" action="{{ url_for('guest.list_dealerships') }}">
           <div class="form-field">
-              <label for="city">Şehir Seç:</label>
+              <label for="city">Select City:</label>
               <select name="city_id" id="city" onchange="this.form.submit()">
-                  <option value="">Tüm Şehirler</option>
+                  <option value="">All Cities</option>
                   {% for city in cities %}
                     <option value="{{ city.city_id }}" {% if city.city_id|string == selected_city_id %}selected{% endif %}>
                       {{ city.city_name }}
@@ -22,7 +19,6 @@
           </div>
       </form>
 
-      <!-- Bayi Listesi -->
       {% if dealerships %}
           <ul class="dealership-list" style="max-height: 400px; overflow-y: auto;">
               {% for d in dealerships %}
@@ -34,11 +30,10 @@
               {% endfor %}
           </ul>
       {% else %}
-          <p>Seçilen şehirde bayi bulunamadı.</p>
+          <p>No dealership found in the selected city.</p>
       {% endif %}
   </div>
 
-  <!-- Sağ kutu: Harita -->
   <div class="dealership-map-box">
       <div id="map"></div>
   </div>
@@ -49,7 +44,6 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<!-- JSON veriyi taşıyan gizli div -->
 <div id="dealership-data" data-json='{{ dealerships_json | tojson | safe }}'></div>
 
 <!-- Marker JS -->

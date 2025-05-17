@@ -3,12 +3,12 @@
 <div class="form-map-container">
 
   <div class="register-form">
-      <h2 class="form-title">Yeni Randevu Al</h2>
+      <h2 class="form-title">Book New Appointment</h2>
       <form method="POST">
           <div class="form-field">
-            <label>Şehir:</label>
+            <label>City:</label>
             <select name="city_id" onchange="this.form.submit()" required>
-              <option value="" disabled {% if not selected_city_id %}selected{% endif %}>Şehir Seç</option>
+              <option value="" disabled {% if not selected_city_id %}selected{% endif %}>Select City</option>
               {% for city in cities %}
                 <option value="{{ city.city_id }}" {% if selected_city_id and city.city_id == selected_city_id|int %}selected{% endif %}>
                   {{ city.city_name }}
@@ -18,9 +18,9 @@
           </div>
 
           <div class="form-field">
-            <label>Bayi:</label>
+            <label>Dealership:</label>
             <select name="dealership_id" required>
-              <option value="" disabled selected>Bayi Seç</option>
+              <option value="" disabled selected>Select Dealership</option>
               {% for d in dealerships %}
                 <option value="{{ d.dealership_id }}" {% if selected_dealership_id and d.dealership_id == selected_dealership_id|int %}selected{% endif %}>
                   {{ d.d_name }}
@@ -30,19 +30,19 @@
           </div>
 
           <div class="form-field">
-            <label>Tarih:</label>
+            <label>Date:</label>
             <input type="date" name="date" required>
           </div>
 
           <div class="form-field">
-            <label>Saat:</label>
+            <label>Hour:</label>
             <input type="time" name="time" required>
           </div>
 
           <div class="form-field">
-            <label>Bakım Türü:</label>
+            <label>Maintenance Type:</label>
             <select name="type_id" required>
-              <option value="" disabled selected>Bakım Türü Seç</option>
+              <option value="" disabled selected>Select Type</option>
               {% for t in maintenance_types %}
                 <option value="{{ t.type_id }}">{{ t.type_name }}</option>
               {% endfor %}
@@ -50,9 +50,9 @@
           </div>
 
           <div class="form-field">
-            <label>Araç:</label>
+            <label>Vehicle:</label>
             <select name="vehicle_id" required>
-              <option value="" disabled selected>Araç Seç</option>
+              <option value="" disabled selected>Select Vehicle</option>
               {% for v in vehicles %}
                 <option value="{{ v.vehicle_id }}">{{ v.brand }} {{ v.model }}</option>
               {% endfor %}

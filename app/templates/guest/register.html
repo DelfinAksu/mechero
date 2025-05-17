@@ -4,7 +4,7 @@
   
   <form method="POST" class="register-form">
     {{ form.hidden_tag() }}
-    <h2 class="form-title">Kayıt Ol</h2>
+    <h2 class="form-title">Register</h2>
     <div class="form-field">
       {{ form.fname.label }}<br>{{ form.fname(size=32) }}
       {% for error in form.fname.errors %}
