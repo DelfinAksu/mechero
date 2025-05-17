@@ -9,14 +9,13 @@ bp = Blueprint('employee', __name__)
 @bp.route('/dashboard')
 @login_required
 def dashboard():
-    # Buraya takvim veya özetler gelebilir
     return render_template('employee/dashboard.html')
 
 @bp.route('/appointments')
 @login_required
 def appointments():
     if not current_user.get_id().startswith("e"):
-        return "Yetkisiz erişim", 403
+        return "Unauthorized access", 403
 
     try:
         emp_id = int(current_user.get_id()[1:])
@@ -34,7 +33,7 @@ def appointments():
         return render_template("employee/appointments.html", appointments=appts)
 
     except Exception as e:
-        return f"Hata: {e}", 400
+        return f"Error: {e}", 400
 
 
 @bp.route('/appointments/json')

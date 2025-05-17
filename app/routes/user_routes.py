@@ -14,6 +14,7 @@ bp = Blueprint('user', __name__)
 def dashboard():
     return render_template('user/dashboard.html', user=current_user)
 
+
 @bp.route('/appointments')
 @login_required
 def appointments():
@@ -27,20 +28,21 @@ def appointments():
 
     return render_template('user/appointments.html', appointments=user_appts, now=datetime.now)
 
+
 @bp.route('/appointments/cancel/<int:appointment_id>', methods=['POST'])
 @login_required
 def cancel_appointment(appointment_id):
     appt = Appointment.query.get_or_404(appointment_id)
     if appt.user_id != current_user.user_id:
-        flash("Bu randevuyu iptal etme yetkiniz yok.", "danger")
+        flash("You do not have permission to cancel this appointment.", "danger")
         return redirect(url_for('user.appointments'))
 
     if appt.status == 'Scheduled' and datetime.combine(appt.a_date, appt.a_time) > datetime.now():
         appt.status = 'Cancelled'
         db.session.commit()
-        flash("Randevu başarıyla iptal edildi.", "info")
+        flash("Appointment successfully canceled.", "info")
     else:
-        flash("Randevu iptal edilemez.", "warning")
+        flash("The appointment cannot be canceled.", "warning")
 
     return redirect(url_for('user.appointments'))
 
@@ -64,7 +66,6 @@ def book_appointment():
                 'id': d.dealership_id,
                 'name': d.d_name,
                 'street': d.address,
-                'number': "",  # Varsa ayrıntı girilebilir
                 'latitude': d.latitude,
                 'longitude': d.longitude
             }
@@ -108,31 +109,29 @@ def book_appointment():
             db.session.add(appointment)
             db.session.commit()
 
-            # Aynı bayideki çalışanları al
             employees = Employee.query.filter_by(dealership_id=dealership_id).all()
 
             if employees:
-                # Rastgele bir çalışan seç (daha sonra daha akıllı atama yapılabilir)
                 chosen_employee = random.choice(employees)
 
                 schedule = EmployeeSchedule(
                     work_date=date_obj,
                     start_time=time_obj,
-                    end_time=(datetime.combine(date_obj, time_obj) + timedelta(hours=1)).time(),  # örnek 1 saatlik
+                    end_time=(datetime.combine(date_obj, time_obj) + timedelta(hours=1)).time(), 
                     employee_id=chosen_employee.employee_id,
                     appointment_id=appointment.appointment_id
                 )
                 db.session.add(schedule)
                 db.session.commit()
 
-            print("✅ Randevu eklendi:", appointment)
-            flash("Randevu başarıyla oluşturuldu!", "success")
+            print("Appointment added: ", appointment)
+            flash("Appointment successfully created!", "success")
             return redirect(url_for('user.dashboard'))
 
         except Exception as e:
             db.session.rollback()
-            print("❌ DB HATASI:", e)
-            flash(f"Bir hata oluştu: {e}", "danger")
+            print("DB Error:", e)
+            flash(f"An error occured: {e}", "danger")
 
     user_vehicles = current_user.vehicles
     return render_template(
@@ -155,35 +154,33 @@ def profile():
 @login_required
 def update_profile():
     if request.method == 'POST':
-        # Temel bilgiler
         current_user.u_fname = request.form['fname']
         current_user.u_lname = request.form['lname']
         current_user.u_phone = request.form['phone']
         current_user.u_mail = request.form['email']
 
-        # Şifre değiştirme isteği varsa
         old_password = request.form.get('old_password')
         new_password = request.form.get('new_password')
         confirm_password = request.form.get('confirm_password')
 
         if old_password or new_password or confirm_password:
             if not current_user.check_password(old_password):
-                flash("Mevcut şifre hatalı!", "danger")
+                flash("Current password is incorrect!", "danger")
                 return redirect(url_for('user.update_profile'))
 
             if new_password != confirm_password:
-                flash("Yeni şifreler uyuşmuyor!", "warning")
+                flash("New passwords do not match!", "warning")
                 return redirect(url_for('user.update_profile'))
 
             if len(new_password) < 6:
-                flash("Yeni şifre en az 6 karakter olmalı.", "warning")
+                flash("The new password must be at least 6 characters long.", "warning")
                 return redirect(url_for('user.update_profile'))
 
             current_user.set_password(new_password)
-            flash("Şifre başarıyla güncellendi.", "success")
+            flash("Password successfully updated.", "success")
 
         db.session.commit()
-        flash("Profil bilgileri güncellendi.", "success")
+        flash("Profile successfully updated.", "success")
         return redirect(url_for('user.profile'))
 
     return render_template('user/update_profile.html', user=current_user)
@@ -199,8 +196,6 @@ def vehicles():
 def add_vehicle():
     if request.method == 'POST':
         try:
-            print("📥 Form verisi alınıyor...")
-
             vehicle = Vehicle(
                 plate_number=request.form['plate_number'],
                 brand=request.form['brand'],
@@ -212,19 +207,18 @@ def add_vehicle():
                 user_id=current_user.user_id
             )
 
-            print("✅ Araç nesnesi oluşturuldu:", vehicle)
+            print("Vehicle object created:", vehicle)
 
             db.session.add(vehicle)
             db.session.commit()
 
-            flash("Araç başarıyla eklendi!", "success")
-            print("🚀 Commit başarılı")
+            flash("Vehicle successfully added!", "success")
             return redirect(url_for('user.vehicles'))
 
         except Exception as e:
             db.session.rollback()
-            flash(f"Araç eklenirken bir hata oluştu: {e}", "danger")
-            print("❌ Commit HATASI:", e)
+            flash(f"An error occurred while adding the vehicle: {e}", "danger")
+            print("Commit Error:", e)
 
     return render_template('user/add_vehicle.html')
 
@@ -233,12 +227,11 @@ def add_vehicle():
 def delete_vehicle(vehicle_id):
     vehicle = Vehicle.query.get_or_404(vehicle_id)
 
-    # Güvenlik: Bu araç gerçekten giriş yapan kullanıcıya mı ait?
     if vehicle.user_id != current_user.user_id:
-        flash("Bu aracı silmeye yetkiniz yok!", "danger")
+        flash("You do not have permission to delete this vehicle!", "danger")
         return redirect(url_for('user.vehicles'))
 
     db.session.delete(vehicle)
     db.session.commit()
-    flash("Araç başarıyla silindi.", "info")
+    flash("Vehicle successfully deleted.", "info")
     return redirect(url_for('user.vehicles'))
