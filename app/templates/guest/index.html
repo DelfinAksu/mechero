@@ -1,5 +1,178 @@
 {% extends 'layout/base_guest.html' %}
 
+{% block title %}Home - MecHero{% endblock %}
+
 {% block content %}
-<h1>Welcome to Mechero Home Page!</h1>
+<div class="hero-section">
+    <div class="hero-overlay">
+        <h1>Your Trusted Vehicle Service Platform</h1>
+        <p>Book maintenance online. Fast, easy, and reliable.</p>
+        <div class="hero-buttons">
+            <a href="/register" class="btn-primary">Register</a>
+            <a href="/about" class="btn-secondary">Learn More</a>
+        </div>
+    </div>
+</div>
+
+<section class="services">
+  <h2>Our Services</h2>
+  <div class="service-cards">
+    <div class="service-card">
+      <h3>Periodic Maintenance</h3>
+      <p>Keep your vehicle running smoothly with regular check-ups and oil changes.</p>
+    </div>
+    <div class="service-card">
+      <h3>Mechanical Repair</h3>
+      <p>From engine diagnostics to brake fixes, we’ve got you covered.</p>
+    </div>
+    <div class="service-card">
+      <h3>Damage Repair</h3>
+      <p>Accidents happen. We repair and restore your vehicle to its best condition.</p>
+    </div>
+    <div class="service-card">
+      <h3>Other</h3>
+      <p>Need something else? Our expert team is here to help with custom services.</p>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <h2>Why Choose MecHero?</h2>
+
+  <div class="features-image">
+    <img src="{{ url_for('static', filename='images/repairman.jpg') }}" alt="Car service team">
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-item">
+      <i class="fas fa-calendar-check feature-icon"></i>
+      <h3>Online Booking</h3>
+      <p>Book your maintenance anytime, anywhere in just a few clicks.</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-money-check-alt feature-icon"></i>
+      <h3>Transparent Pricing</h3>
+      <p>No hidden fees. See your service cost before you book.</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-map-marked-alt feature-icon"></i>
+      <h3>Widespread Network</h3>
+      <p>Two authorized dealerships in every city, ready to serve you.</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-users feature-icon"></i>
+      <h3>324+ Professionals</h3>
+      <p>Our expert team is here to keep your vehicle in top shape.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="how-it-works">
+  <h2>How It Works</h2>
+  <p class="how-it-works-subtitle">
+    Getting your car serviced has never been this easy. Just follow 3 simple steps and you're done — no calls, no confusion, no wasted time.
+  </p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <i class="fas fa-user-plus step-icon"></i>
+      <h3>Register</h3>
+      <p>Create your free account and add your vehicle in seconds.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <i class="fas fa-calendar-alt step-icon"></i>
+      <h3>Book Appointment</h3>
+      <p>Choose your service, date, and dealership — all online.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <i class="fas fa-tools step-icon"></i>
+      <h3>Get Serviced</h3>
+      <p>Drive in, get professional care, and drive out happy.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="founder-section">
+  <div class="founder-container">
+    <h2><i class="fas fa-heart"></i> Our Founders</h2>
+
+    <img src="{{ url_for('static', filename='images/founders.jpg') }}" alt="Founders of MecHero" class="founder-photo">
+    <p class="founder-names">Miray Topcu & Delfin Aksu</p>
+    <p class="founder-description">
+      Driven by passion for innovation and technology, Miray and Delfin founded MecHero to transform the way car maintenance is handled. Their vision: smarter, simpler, and customer-focused vehicle care.
+    </p>
+
+    <div class="founder-button">
+      <a href="/about" class="btn-meet">Meet the Team</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq">
+    <div class="faq-item">
+      <h3>How do I book an appointment?</h3>
+      <p>You can register, add your vehicle, and select a dealership and time slot from the “New Appointment” page.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is MecHero available in my city?</h3>
+      <p>Yes! We have two authorized partner dealerships in every city across the country.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I cancel or reschedule my appointment?</h3>
+      <p>Absolutely. You can cancel or change your appointment from the “My Appointments” section anytime.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is there any cost before visiting the dealership?</h3>
+      <p>No upfront fees. Service pricing is shown before you confirm your appointment.</p>
+    </div>
+  </div>
+</section>
+
+
+<div class="cta-section">
+  <h2>Ready to get started?</h2>
+  <p>Join thousands of drivers who trust MecHero for smarter vehicle care.</p>
+  <a href="/register" class="cta-button">Register Now</a>
+</div>
+
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-about">
+      <h3>MecHero</h3>
+      <p>Your trusted car care companion. Fast. Smart. Reliable.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/register">Register</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 MecHero. All rights reserved.</p>
+  </div>
+</footer>
 {% endblock %}
+

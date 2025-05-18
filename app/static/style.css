@@ -1245,193 +1245,473 @@ body.loaded .dashboard-image {
 }
 
 
+/*Anasayfa*/
+
+.hero-section {
+    background-image: url("/static/images/hero-car.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* siyah yarı saydam katman */
+    padding: 60px 30px;
+    text-align: center;
+    border-radius: 12px;
+    max-width: 700px;
+}
+
+.hero-overlay h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero-overlay p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+.hero-buttons a {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 0 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #004494;
+}
+
+.btn-secondary {
+    background-color: white;
+    color: #0056b3;
+}
+
+.btn-secondary:hover {
+    background-color: #f0f0f0;
+}
+
+
+/*Bakım türleri sectionu*/
+.services {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.services h2 {
+    font-size: 28px;
+    color: #0056b3;
+    margin-bottom: 40px;
+}
+
+.service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.service-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 25px;
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    color: #666;
+    font-size: 14px;
+}
+
+
+/*features sectionu*/
+
+.features {
+    background-color: #ffffff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 28px;
+    color: #0056b3;
+    margin-bottom: 30px;
+}
+
+.features-image {
+    margin-bottom: 30px;
+}
+
+.features-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px; 
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/*how-it-works sectionu*/
+.how-it-works {
+    background-color: #eef5ff; /* Diğer sectionlardan ayırt edici açık mavi */
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.how-it-works h2 {
+    font-size: 32px;
+    color: #0056b3;
+    margin-bottom: 10px;
+}
+
+.how-it-works-subtitle {
+    font-size: 16px;
+    color: #444;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-style: italic;
+}
+
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.step {
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    flex: 1 1 250px;
+    max-width: 300px;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.step:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.step-icon {
+    font-size: 40px;
+    color: #0056b3;
+    margin-bottom: 15px;
+}
+
+.step h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.step p {
+    font-size: 15px;
+    color: #555;
+}
+
+/* Sıra numarası için baloncuk */
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    background-color: #0056b3;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+
+
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.feature-item {
+    background-color: #f9f9f9;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item h3 {
+    color: #0056b3;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 15px;
+    color: #555;
+}
+
+/*founders-section*/
+.founder-section {
+    background-color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.founder-section h2 {
+    font-size: 30px;
+    color: #0056b3;
+    margin-bottom: 40px;
+}
+
+.founder-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.founder-photo {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+    transition: transform 0.3 ease;
+}
+
+.founder-names {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.founder-description {
+    font-size: 15px;
+    color: #555;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+.founder-photo:hover {
+    transform: scale(1.08);
+    transition: transform 0.3s ease;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+.founder-button {
+    margin-top: 25px;
+}
+
+.btn-meet {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-meet:hover {
+    background-color: #004494;
+}
 
 
 
 
 
+/*FAQ*/
+.faq-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-section h2 {
+    text-align: center;
+    color: #0056b3;
+    margin-bottom: 30px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.faq-item p {
+    font-size: 15px;
+    color: #555;
+}
+
+/*CTA-section*/
+.cta-section {
+    background-color: #0056b3;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.cta-section h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: white;
+    color: #0056b3;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #b4b2b2e8;
+    color: #003d80;
+}
 
 
 
+/*footer for anasayfa*/
 
+.footer {
+    background-color: #1c1c1c;
+    color: #f1f1f1;
+    padding: 40px 20px 10px;
+    font-size: 14px;
+}
 
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
+.footer-about,
+.footer-links,
+.footer-social {
+    flex: 1 1 250px;
+    margin-bottom: 20px;
+}
 
+.footer h3,
+.footer h4 {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
 
-    /* Genel container */
-/*    .about-container {
-        max-width: 1000px;
-        margin: 50px auto;
-        padding: 20px;
-        font-family: Arial, sans-serif;
-        text-align: center;
-    }
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
 
-    /* Giriş ve misyon paragrafları */
-/*    .about-intro, .about-mission {
-        font-size: 16px;
-        line-height: 1.6;
-        color: #004c6d;
-        margin-bottom: 30px;
-    }
-    .about-wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 40px;
-        margin: 60px;
-        flex-wrap: wrap;
-    }
+.footer-links ul li {
+    margin-bottom: 8px;
+}
 
-    .about-left {
-        flex: 1;
-        min-width: 320px;
-    }
+.footer-links ul li a {
+    color: #ccc;
+    text-decoration: none;
+}
 
-    .about-right {
-        flex: 1;
-        min-width: 320px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.footer-links ul li a:hover {
+    color: #fff;
+}
 
-    .about-right img {
-        width: 100%;
-        max-width: 500px;
-        border-radius: 20px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        object-fit: cover;
-    }
+.footer-social .social-icons a {
+    color: #ccc;
+    margin-right: 10px;
+    font-size: 18px;
+    text-decoration: none;
+}
 
-    /* Responsive */
-/*    @media (max-width: 900px) {
-        .about-wrapper {
-            flex-direction: column;
-            align-items: center;
-        }
+.footer-social .social-icons a:hover {
+    color: #fff;
+}
 
-        .about-right img {
-            max-width: 90%;
-        }
-    }
-    @media (max-width: 768px) {
-        .stat-circle {
-            width: 90%;
-            height: auto;
-            border-radius: 20px;
-            padding: 30px;
-            margin: 10px 0;
-        }
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    padding-top: 15px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #aaa;
+}
 
-        .stat-circle h2 {
-            font-size: 24px;
-        }
-    }
-
-    /* İstatistikler kısmı */
- /*   .about-stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-        margin-top: 30px;
-        justify-items: center;
-    }
-
-    /* Daireler */
-/*    .stat-circle {
-        width: 400px;
-        height: 300px;
-        border-radius: 50%;
-        padding: 20px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        position: relative;
-        z-index: 1;
-        text-align: center;
-    }
-
-    .stat-circle.light {
-        background-color: #66b3ff;
-        color: #003f8a;
-        z-index: 2;
-    }
-
-    .stat-circle.medium {
-        background-color: #3399ff;
-        color: white;
-        z-index: 3;
-    }
-
-    .stat-circle.dark {
-        background-color: #002f5f;
-        color: white;
-        z-index: 4;
-    }
-
-    /* Başlıklar içeride */
-/*    .stat-circle h2 {
-        font-size: 28px;
-        margin-bottom: 20px;
-    }
-
-    .stat-circle p {
-        margin: 5px 0;
-        font-weight: bold;
-    }
-
-    .stat-circle span {
-        font-size: 12px;
-        margin-top: 10px;
-        text-align: center;
-        padding: 0 40px; 
-
-    }
-    .founders {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin-top: 10px;
-        gap: 0;
-    }
-
-    .founder {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex: 1;
-    }
-
-    .founder p {
-        margin: 5px 0;
-        font-weight: bold;
-    }
-
-
-    .founder-icon {
-        width: 50px;
-        height: 50px;
-        background-color: white;
-        border-radius: 50%;
-    }
-    .founder-icon {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 2px solid #fff;
-    }
-
-    .founder-icon img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-*/
 
 
 
