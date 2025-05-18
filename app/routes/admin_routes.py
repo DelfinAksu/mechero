@@ -125,17 +125,18 @@ def employee_avg_hours():
     result = db.session.query(
         Employee.employee_id,
         Employee.e_fname,
+        Employee.e_lname,
         func.avg(
             func.extract('epoch', EmployeeSchedule.end_time - EmployeeSchedule.start_time) / 3600
         ).label("avg_hours")
     ).join(EmployeeSchedule).group_by(
-        Employee.employee_id, Employee.e_fname
+        Employee.employee_id, Employee.e_fname, Employee.e_lname 
     ).order_by(
         func.avg(func.extract('epoch', EmployeeSchedule.end_time - EmployeeSchedule.start_time)).desc()
-    ).all()
+    ).limit(300).all()
 
-    labels = [r[1] for r in result]
-    values = [round(r[2], 2) for r in result] 
+    labels = [f"{r[0]} - {r[1]} {r[2]}" for r in result] 
+    values = [round(r[3], 2) for r in result] 
 
     return render_template("admin/employee_avg_hours.html",
                            labels=labels,
