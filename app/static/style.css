@@ -832,14 +832,22 @@ main {
 }
 
 .social-icons {
-  margin-top: 5px;
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
 }
 
-.social-icons i {
-  margin: 0 6px;
-  font-size: 18px;
+.social-icons a {
+  font-size: 24px;
   color: #004c6d;
-  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #0077b5; /* LinkedIn rengi gibi */
 }
 @media (max-width: 768px) {
   .founder-section {
@@ -1039,6 +1047,47 @@ main {
     max-width: 90%;
   }
 }
+
+.about-cta {
+  background-image: url("../static/images/about-cta-bg.jpg"); /* arka plan resmi */
+  background-size: cover;
+  background-position: center;
+  padding: 100px 20px;
+  color: white;
+  text-align: center;
+  position: relative;
+  min-height: 500px;
+}
+
+.about-cta::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* koyu overlay */
+}
+
+.about-cta-content {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  z-index: 1;
+  padding-top: 350px;
+}
+
+.about-cta h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.about-cta p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+
+
+
+
 
 /* users kısmı*/
 /*Dashboard*/
@@ -1866,6 +1915,23 @@ body.loaded .dashboard-image {
     font-size: 13px;
     color: #aaa;
 }
+.contact-info {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info li {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.contact-info i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
 
 
 
