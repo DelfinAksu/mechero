@@ -78,6 +78,7 @@ def login_page():
 
     return render_template('guest/login.html', form=form)
 
+
 # Logout Part
 @bp.route('/logout', methods=['GET', 'POST'])
 @login_required
@@ -86,6 +87,7 @@ def logout_page():
     flash("Successfully logged out.", "info")
     return redirect(url_for('guest.index_page'))
 
+    
 # Dealerships List Part
 @bp.route('/dealerships/')
 def list_dealerships():
