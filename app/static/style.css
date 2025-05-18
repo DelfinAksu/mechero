@@ -25,9 +25,6 @@ main {
     margin-top: 100px;  /* navbar yüksekliği kadar boşluk bırak */
 }
 
-
-
-
 /* Sol kısım: logo */
 .logo {
     font-size: 36px;
@@ -1239,6 +1236,14 @@ body.loaded .dashboard-image {
     max-width: 300px;
   }
 }
+
+
+/*employee*/
+
+.employee-body main {
+    margin-top: 40px;
+}
+
 
 
 

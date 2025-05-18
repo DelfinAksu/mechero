@@ -1,9 +1,10 @@
 {% extends "layout/base_employee.html" %}
 {% block content %}
 
-<h2 class="appointments-title">Appointments</h2>
+<h2 class="appointments-title">Appointments </h2>
 
 <div class="appointment-summary-bar">
+
   {% for a in appointments %}
     <div class="summary-card">
       <strong>{{ a.a_date }} – {{ a.a_time.strftime('%H:%M') }}</strong><br>
@@ -56,12 +57,20 @@
 
 <!-- Style -->
 <style>
+  .appointments-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #0056b3;
+}
+
   .appointment-summary-bar {
     display: flex;
-    overflow-x: auto;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 1rem;
     padding: 1rem;
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem auto;
+    max-width: 1000px;
   }
 
   .summary-card {
@@ -74,7 +83,7 @@
   }
 
   #calendar {
-    max-width: 900px;
+    max-width: 700px;
     margin: 0 auto;
   }
 </style>
