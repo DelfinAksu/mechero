@@ -1,46 +1,82 @@
-{% extends 'layout/base_guest.html' %}
 
-{% block content %}
-  
-  <form method="POST" class="register-form">
-    {{ form.hidden_tag() }}
-    <h2 class="form-title">Register</h2>
-    <div class="form-field">
-      {{ form.fname.label }}<br>{{ form.fname(size=32) }}
-      {% for error in form.fname.errors %}
-        <div class="text-danger">{{ error }}</div>
-      {% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="login-layout">
+    <!-- Sol: Görsel + Yazı -->
+    <div class="login-left">
+      <img src="{{ url_for('static', filename='images/login-side.jpg') }}" alt="Register Visual">
+      <div class="login-left-text">
+        <h2>Join the community</h2>
+        <p>Sign up and start taking care of your car in the smartest way possible.</p>
+      </div>
     </div>
-    <div class="form-field">
-      {{ form.lname.label }}<br>{{ form.lname(size=32) }}
-      {% for error in form.fname.errors %}
-        <div class="text-danger">{{ error }}</div>
-      {% endfor %}
+
+    <!-- Sağ: Kayıt Formu -->
+    <div class="login-right">
+      <form method="POST" class="modern-login-form">
+        {{ form.hidden_tag() }}
+        <h2>Register</h2>
+
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          {{ form.fname(class="form-input") }}
+          {% for error in form.fname.errors %}
+            <div class="text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          {{ form.lname(class="form-input") }}
+          {% for error in form.lname.errors %}
+            <div class="text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          {{ form.email(class="form-input") }}
+          {% for error in form.email.errors %}
+            <div class="text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          {{ form.phone(class="form-input") }}
+          {% for error in form.phone.errors %}
+            <div class="text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          {{ form.password(class="form-input") }}
+          {% for error in form.password.errors %}
+            <div class="text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="form-group">
+          <label for="confirm_password">Confirm Password</label>
+          {{ form.confirm_password(class="form-input") }}
+          {% for error in form.confirm_password.errors %}
+            <div class="text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <div>
+          {{ form.submit(class="login-button") }}
+        </div>
+      </form>
     </div>
-    <div class="form-field">
-      {{ form.email.label }}<br>{{ form.email(size=32) }}
-      {% for error in form.fname.errors %}
-        <div class="text-danger">{{ error }}</div>
-      {% endfor %}
-    </div>
-    <div class="form-field">
-      {{ form.phone.label }}<br>{{ form.phone(size=32) }}
-      {% for error in form.fname.errors %}
-        <div class="text-danger">{{ error }}</div>
-      {% endfor %}
-    </div>
-    <div class="form-field">
-      {{ form.password.label }}<br>{{ form.password(size=32) }}
-      {% for error in form.fname.errors %}
-        <div class="text-danger">{{ error }}</div>
-      {% endfor %}
-    </div>
-    <div class="from-field">
-      {{ form.confirm_password.label }}<br>{{ form.confirm_password(size=32) }}
-      {% for error in form.fname.errors %}
-        <div class="text-danger">{{ error }}</div>
-      {% endfor %}
-    </div>
-    <div>{{ form.submit() }}</div>
-  </form>
-{% endblock %}
+  </div>
+</body>
+</html>
+
