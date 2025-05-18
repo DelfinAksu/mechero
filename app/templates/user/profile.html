@@ -1,11 +1,21 @@
 {% extends 'layout/base_user.html' %}
+
 {% block content %}
-<h2>My Profile</h2>
-<ul>
-  <li><strong>Name:</strong> {{ user.u_fname }}</li>
-  <li><strong>Surname:</strong> {{ user.u_lname }}</li>
-  <li><strong>Phone:</strong> {{ user.u_phone }}</li>
-  <li><strong>E-mail:</strong> {{ user.u_mail }}</li>
-</ul>
-<a href="{{ url_for('user.update_profile') }}">Update Profile</a>
+<div class="profile-wrapper">
+  <div class="profile-left">
+    <img src="{{ url_for('static', filename='images/features.jpg') }}" alt="Profile Picture">
+  </div>
+
+  <div class="profile-right">
+    <h2 class="profile-title">Welcome, {{ user.u_fname }}!</h2>
+    <div class="profile-info">
+      <p><i class="fas fa-user"></i> <strong>Name:</strong> {{ user.u_fname }}</p>
+      <p><i class="fas fa-user-tag"></i> <strong>Surname:</strong> {{ user.u_lname }}</p>
+      <p><i class="fas fa-phone"></i> <strong>Phone:</strong> {{ user.u_phone }}</p>
+      <p><i class="fas fa-envelope"></i> <strong>E-mail:</strong> {{ user.u_mail }}</p>
+    </div>
+    <a href="{{ url_for('user.update_profile') }}" class="update-button">Update Profile</a>
+  </div>
+</div>
 {% endblock %}
+
