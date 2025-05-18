@@ -1,0 +1,87 @@
+# HOW TO RUN – Mechero Web Application
+
+This guide explains how to set up and run the Mechero Flask web application using a PostgreSQL dump file.
+
+--------------------------
+1. Prerequisites
+--------------------------
+- Python 3.9+ must be installed.
+- PostgreSQL must be installed and running.
+- (Optional but recommended) Create and activate a virtual environment:
+
+    python -m venv venv
+    source venv/bin/activate       # On macOS/Linux
+    venv\Scripts\activate        # On Windows
+
+--------------------------
+2. Install Dependencies
+--------------------------
+In your terminal, run the following to install required packages:
+
+    pip install -r requirements.txt
+
+--------------------------
+3. Set Up the PostgreSQL Database
+--------------------------
+1. Create a new PostgreSQL database (named `mechero`).
+2. Import the provided `mechero_dump.sql` dump file into this database:
+
+    psql -U <username> -d mechero -f path/to/mechero_dump.sql
+
+Replace `<username>` with your PostgreSQL username and update the path to the actual SQL file.
+
+--------------------------
+4. Environment Variables
+--------------------------
+Ensure a `.env` file exists in the project root and contains:
+
+    DATABASE_URL=postgresql://<username>:<password>@localhost:5432/mechero
+    SECRET_KEY=dev-key
+
+Make sure to replace `<username>` and `<password>` with your PostgreSQL credentials.
+
+--------------------------
+5. Run the Application
+--------------------------
+Start the Flask development server with:
+
+    python run.py
+
+Then open your browser and go to:
+
+    http://127.0.0.1:5000
+
+--------------------------
+6. Access
+--------------------------
+1- To log in as an admin, use:
+
+    Email: admin@admin.com
+    Password: 123456
+
+This email is used to recognize admin access in the system logic.
+
+2- To log in as an user, use:
+(For example)
+
+    Email: gmurat2427@google.com
+    Password: M3V41AGC3P3
+
+This email is used to recognize user access in the system logic.
+
+Pay Attention: To view different user interfaces, you can use the u_mail and u_password values from the users table.
+One important point to keep in mind is that these records are stored as character data types, so if you copy them directly from the table, they will be pasted with quotation marks (") around them.
+Be sure to remove the quotation marks at the beginning and end of both the email and password fields before using them. Otherwise, the login attempt will fail.
+
+
+3- To log in as an employee, use:
+(For example)
+
+    Email: 2018@mechero.com
+    Password: 2018
+
+This email is used to recognize employee access in the system logic.
+
+Pay Attention: To view different employee interfaces, you can use the e_email and employee_id values from the users table.
+One important point to keep in mind is that these records are stored as character data types, so if you copy them directly from the table, they will be pasted with quotation marks (") around them.
+Be sure to remove the quotation marks at the beginning and end of both the email and password fields before using them. Otherwise, the login attempt will fail.
