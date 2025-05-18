@@ -85,7 +85,7 @@ def login_page():
 def logout_page():
     logout_user()
     flash("Successfully logged out.", "info")
-    return redirect(url_for('guest.login_page'))
+    return redirect(url_for('guest.index_page'))
 
     
 # Dealerships List Part
