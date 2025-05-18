@@ -7,7 +7,6 @@
 </head>
 <body>
   <div class="login-layout">
-    <!-- Sol: Görsel + Yazı -->
     <div class="login-left">
       <img src="{{ url_for('static', filename='images/login-side.jpg') }}" alt="Login Visual">
       <div class="login-left-text">
@@ -16,7 +15,6 @@
       </div>
     </div>
 
-    <!-- Sağ: Form -->
     <div class="login-right">
       <form method="POST" class="modern-login-form">
         {{ form.hidden_tag() }}
@@ -34,18 +32,7 @@
         <div>
           {{ form.submit(class="login-button") }}
         </div>
-        
-      <!--
-        <div class="form-field">
-          <p>{{ form.email.label }}<br>{{ form.email(size=32) }}</p>
-        </div>
-        <div class="form-field">
-          <p>{{ form.password.label }}<br>{{ form.password(size=32) }}</p>
-        </div>
-        <div>
-          <p>{{ form.submit(class="login-button") }}</p>
-        </div>
-      -->
+      
       </form>
     </div>
   </div>

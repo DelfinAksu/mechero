@@ -8,11 +8,11 @@
     background-color: white;
     padding: 15px 30px;
     border-radius: 4px;
-    position: fixed;       /* Ekrana sabitlenir */
-    top: 0;                /* Sayfanın en üstünde yer alır */
-    width: 100%;           /* Sayfanın tamamını kaplar */
-    z-index: 999;          /* Diğer öğelerin üstünde olur */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    position: fixed;       
+    top: 0;                
+    width: 100%;           
+    z-index: 999;          
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
     box-sizing: border-box;
 }
 
@@ -21,20 +21,20 @@ body:not(.admin-body) main {
 }
 
 
-/* Sol kısım: logo */
+/* Left Part: logo */
 .logo {
     font-size: 36px;
     font-weight: bold;
-    color: #0056b3; /* Mavi ton */
+    color: #0056b3; 
     text-decoration: none;
 }
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 50px; /* margin yerine gap kullanalım */
+    gap: 50px; 
 }
 
-/* Sağ kısım linkler */
+/* Right Part Links */
 .nav-right a {
     color: #004c6d;
     text-decoration: none;
@@ -43,7 +43,6 @@ body:not(.admin-body) main {
     padding: 5px 0;
 }
 
-/* Hover efekti: altına açık mavi bar */
 .nav-right a::after {
     content: "";
     position: absolute;
@@ -51,7 +50,7 @@ body:not(.admin-body) main {
     bottom: 0;
     width: 0%;
     height: 3px;
-    background-color: #add8e6; /* Açık mavi */
+    background-color: #add8e6; 
     transition: width 0.3s;
 }
 
@@ -68,24 +67,22 @@ body:not(.admin-body) main {
     border-radius: 4px;
     font-size: 20px;
     text-decoration: none;
-    position: relative; /* hover çizgi olmaması için */
+    position: relative; 
     overflow: hidden;
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Login ve logout buton hover: açık mavi arka plan + koyu yazı */
 .nav-right .login-button:hover,
 .nav-right .logout-button:hover {
-    background-color: #add8e6; /* Açık mavi */
-    color: #003f8a; /* Yazı biraz koyu olsun ki okunaklı kalsın */
+    background-color: #add8e6; 
+    color: #003f8a; 
 }
 
-/* Login ve logout butonunda hover çizgisi olmasın */
 .nav-right .login-button::after,
 .nav-right .logout-button::after {
     display: none;
 }
-/* Hamburger buton - mobilde görünür */
+/* Hamburger buton */
 .hamburger {
     display: none;
     font-size: 28px;
@@ -102,7 +99,7 @@ body:not(.admin-body) main {
     }
 
     .nav-right {
-        display: none; /* Başta gizli */
+        display: none; 
         flex-direction: column;
         align-items: flex-end;
         text-align: center;
@@ -112,7 +109,7 @@ body:not(.admin-body) main {
     }
 
     .nav-right.show {
-        display: flex; /* Menü açılınca görünür */
+        display: flex; 
         background-color: #c4e1f0;
     }
 
@@ -134,10 +131,10 @@ body:not(.admin-body) main {
   }
 
   .nav-right a:hover {
-    color: #3399ff; /* Hover rengi */
+    color: #3399ff; 
   }
 
-  /* Eğer ::after çizgisi varsa mobilde iptal edelim */
+  
   .nav-right a::after {
     display: none !important;
   }
@@ -233,10 +230,6 @@ body:not(.admin-body) main {
 }
 
 .modern-login-form h2 {
-  /*text-align: center;
-  font-size: 28px;
-  color: #222;
-  margin-bottom: 10px;*/
   font-size: 26px;
   font-weight: 600;
   font-family: 'Segoe UI', sans-serif;
@@ -296,18 +289,13 @@ body:not(.admin-body) main {
   box-sizing: border-box;
 }
 
-
-
-
-
-
 /* Register Form*/
 .register-form {
     width: 350px;
     margin: 50px auto;
     padding: 30px;
-    background-color: #f0f8ff; /* çok açık mavi/grimsi */
-    border: 5px solid #66b3ff; /* kalın açık mavi border */
+    background-color: #f0f8ff; 
+    border: 5px solid #66b3ff; 
     border-radius: 25px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
 }
@@ -341,7 +329,7 @@ body:not(.admin-body) main {
     padding: 8px;
     border: none;
     border-radius: 4px;
-    background-color: #dff6ff; /* hafif mavi */
+    background-color: #dff6ff; 
     box-sizing: border-box;
     font-size: 14px;
     margin: 0;
@@ -363,7 +351,7 @@ body:not(.admin-body) main {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s, transform 0.1s;
     display: block;
-    margin: 30px auto; /* Butonu ortalar */
+    margin: 30px auto; 
 }
 
 .register-form input[type="submit"]:hover {
@@ -374,15 +362,13 @@ body:not(.admin-body) main {
     transform: translateY(2px);
 }
 
-
-
 /*user dashboard sayfası*/
 
 .dashboard-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh; /* Ekran yüksekliğinin %70’i kadar */
+    height: 70vh; 
 }
 
 .dashboard-message {
@@ -399,14 +385,13 @@ body:not(.admin-body) main {
 .vehicles-page {
     max-width: 400px;
     margin: 0 auto 50px auto;
-    /*padding: 20px;*/
     text-align: center;
 }
 
 .vehicles-banner-wrapper {
   width: 100%;
-  height: 400px;           /* Görünmesini istediğin yükseklik */
-  overflow: hidden;        /* Taşan kısmı gizle */
+  height: 400px;  
+  overflow: hidden;  
   position: relative;
   margin-bottom: 0;
 }
@@ -416,7 +401,7 @@ body:not(.admin-body) main {
   height: 500px;
   object-fit: cover;
   position: relative;
-  top: -150px;             /* Yukarıdan kırpmak için kaydır */
+  top: -150px;    
 }
 
 
@@ -434,7 +419,7 @@ body:not(.admin-body) main {
 }
 
 .vehicle-item {
-    background-color: white; /* açık mavi kutucuk */
+    background-color: white; 
     color: #004c6d;
     margin: 10px 0;
     padding: 12px 20px;
@@ -468,7 +453,7 @@ body:not(.admin-body) main {
 .delete-button {
     background-color: transparent;
     border: none;
-    color: #cc0000; /* koyu kırmızı */
+    color: #cc0000; 
     font-size: 16px;
     margin-left: 10px;
     cursor: pointer;
@@ -479,17 +464,13 @@ body:not(.admin-body) main {
 }
 
 .delete-button:hover {
-    background-color: #fddede; /* çok açık kırmızı */
+    background-color: #fddede; 
 }
-
-
-
-
 
 /* Araç ekleme formu (register form ile aynı görünsün) */
 .add-vehicle-form {
     width: 350px;
-    margin: 50px 0 0 50px; /* sola yaslanmış gibi görünsün */
+    margin: 50px 0 0 50px; 
     padding: 30px;
     background-color: #f0f8ff;
     border: 5px solid #66b3ff;
@@ -545,16 +526,13 @@ body:not(.admin-body) main {
     border-radius: 6px;
     cursor: pointer;
     display: block;
-    margin: 30px auto 0 auto; /* ortalar */
+    margin: 30px auto 0 auto; 
     transition: background-color 0.3s;
 }
 
 .submit-button:hover {
     background-color: #003f8a;
 }
-
-
-
 
 /* Randevular sayfası */
 .appointments-page {
@@ -630,8 +608,8 @@ body:not(.admin-body) main {
 .form-map-container {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Formu dikeyde ortalar */
-    flex-wrap: wrap; /* Responsive için alta geçer */
+    align-items: center; 
+    flex-wrap: wrap; 
     gap: 30px;
     margin: 30px;
 }
@@ -823,9 +801,6 @@ body:not(.admin-body) main {
   }
 }
 
-
-
-
 /*Dealerships sayfası*/
 
 /* Ana konteyner */
@@ -880,11 +855,9 @@ body:not(.admin-body) main {
 }
 
 .dealership-list-box label {
-    color: #004c6d; /* istediğin rengi buraya yaz */
-    font-weight: bold; /* istersen kalın yapabilirsin */
+    color: #004c6d; 
+    font-weight: bold; 
 }
-
-
 
 .dealership-list li {
     margin-bottom: 15px;
@@ -909,8 +882,6 @@ body:not(.admin-body) main {
         height: 400px;
     }
 }
-
-
 
     /*About Us Sayfası*/
 .about-container {
@@ -996,7 +967,7 @@ body:not(.admin-body) main {
 
 .social-icons a:hover {
   transform: scale(1.2);
-  color: #0077b5; /* LinkedIn rengi gibi */
+  color: #0077b5; 
 }
 @media (max-width: 768px) {
   .founder-section {
@@ -1041,7 +1012,7 @@ body:not(.admin-body) main {
   max-width: 600px;
   font-size: 16px;
   line-height: 1.6;
-  color: #003153; /* Lacivertimsi */
+  color: #003153; 
 }
 
 .mission-text p {
@@ -1198,7 +1169,7 @@ body:not(.admin-body) main {
 }
 
 .about-cta {
-  background-image: url("../static/images/about-cta-bg.jpg"); /* arka plan resmi */
+  background-image: url("../static/images/about-cta-bg.jpg"); 
   background-size: cover;
   background-position: center;
   padding: 100px 20px;
@@ -1212,7 +1183,7 @@ body:not(.admin-body) main {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* koyu overlay */
+  background-color: rgba(0, 0, 0, 0.5); 
 }
 
 .about-cta-content {
@@ -1233,11 +1204,6 @@ body:not(.admin-body) main {
   line-height: 1.6;
 }
 
-
-
-
-
-
 /* users kısmı*/
 /*Dashboard*/
 /* Dashboard üst görsel */
@@ -1256,7 +1222,7 @@ body:not(.admin-body) main {
     top: 0;
     left: 0;
     z-index: 0;
-    filter: contrast(1.15) brightness(1.05); /* Karanlık efekt istersen */
+    filter: contrast(1.15) brightness(1.05); 
 }
 
 .dashboard-header .dashboard-message {
@@ -1269,7 +1235,7 @@ body:not(.admin-body) main {
     top: 50%;
     transform: translateY(-50%);
 }
-/* Sayfa yüklenirken resim sonradan geliyor*/
+
 .dashboard-image {
     opacity: 0;
     transition: opacity 0.5s ease-in;
@@ -1334,8 +1300,6 @@ body.loaded .dashboard-image {
     }
 }
 
-
-
 /*Admin bölümü*/
 
 /* Admin Header */
@@ -1347,7 +1311,7 @@ body.loaded .dashboard-image {
     padding: 16px 32px;
     border-bottom: 1px solid #ccc;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    height: 74.4px; /* tam ölçü */
+    height: 74.4px; 
     box-sizing: border-box;
     z-index: 10;
     position: relative;
@@ -1401,7 +1365,7 @@ body.loaded .dashboard-image {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: calc(100vh - 74.4px); /* Header yüksekliği çıkarılır */
+  min-height: calc(100vh - 74.4px); 
   width: 100%;
   display: flex;
   align-items: center;
@@ -1464,7 +1428,7 @@ body.loaded .dashboard-image {
 
 /*Most popular Maintenance type per month grafiğinin sayfası*/
 .chart-section {
-    margin-top: 10px; /* varsayılanı 40px’ten küçült */
+    margin-top: 10px; 
 }
 
 
@@ -1521,7 +1485,7 @@ body.loaded .dashboard-image {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin: 40px 0 20px 0; /* Yukarıdan boşluk */
+  margin: 40px 0 20px 0; 
   font-size: 16px;
 }
 
@@ -1628,7 +1592,7 @@ body.loaded .dashboard-image {
 }
 
 .hero-overlay {
-    background-color: rgba(0, 0, 0, 0.5); /* siyah yarı saydam katman */
+    background-color: rgba(0, 0, 0, 0.5); 
     padding: 60px 30px;
     text-align: center;
     border-radius: 12px;
@@ -1759,7 +1723,7 @@ body.loaded .dashboard-image {
 
 /*how-it-works sectionu*/
 .how-it-works {
-    background-color: #eef5ff; /* Diğer sectionlardan ayırt edici açık mavi */
+    background-color: #eef5ff; 
     padding: 80px 20px;
     text-align: center;
 }
@@ -1837,9 +1801,6 @@ body.loaded .dashboard-image {
     justify-content: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
-
-
-
 
 .features-grid {
     display: grid;
@@ -1939,10 +1900,6 @@ body.loaded .dashboard-image {
     background-color: #004494;
 }
 
-
-
-
-
 /*FAQ*/
 .faq-section {
     padding: 50px 20px;
@@ -2008,8 +1965,6 @@ body.loaded .dashboard-image {
     background-color: #b4b2b2e8;
     color: #003d80;
 }
-
-
 
 /*footer for anasayfa*/
 
@@ -2094,14 +2049,4 @@ body.loaded .dashboard-image {
   margin-right: 10px;
   font-size: 18px;
 }
-
-
-
-
-
-
-
-
-
-
 
