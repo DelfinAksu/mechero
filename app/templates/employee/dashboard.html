@@ -1,11 +1,42 @@
-{% extends 'layout/base_employee.html' %}
+{#
+  {% extends 'layout/base_employee.html' %}
+  {% block content %}
+  <h1>Dashboard Page</h1>
+  <div class="navbar">
+    <a href="{{ url_for('employee.dashboard') }}">Dashboard</a> |
+    <a href="{{ url_for('employee.appointments') }}">Appointments</a> |
+    <a href="{{ url_for('guest.logout_page') }}">Log Out</a>
+  </div>
 
-{% block content %}
-<h1>Dashboard Page</h1>
-<div class="navbar">
-  <a href="{{ url_for('employee.dashboard') }}">Dashboard</a> |
-  <a href="{{ url_for('employee.appointments') }}">Appointments</a> |
-  <a href="{{ url_for('guest.logout_page') }}">Log Out</a>
-</div>
+  {% endblock %}
+#}
 
-{% endblock %}
+<!DOCTYPE html> 
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="dashboard-header">
+        <img src="{{ url_for('static', filename='images/Dashboard.jpg') }}" alt="Dashboard Banner" class="dashboard-image">
+        <h2 class="dashboard-message">Welcome</h2>
+    </div>
+
+    <div class="dashboard-nav">
+        <a href="{{ url_for('employee.appointments') }}">Appointments</a>
+        <form action="{{ url_for('guest.logout_page') }}" method="POST" style="display:inline;">
+            <button type="submit" class="dashboard-logout-button">Log Out</button>
+        </form>
+    </div>
+
+    <script>
+        window.addEventListener("load", function () {
+            document.body.classList.add("loaded");
+        });    
+    </script>
+
+</body>
+</html>
