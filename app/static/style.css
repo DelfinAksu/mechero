@@ -1,9 +1,4 @@
-/* Sayfa arka planı 
-body {
-    margin: 0;
-    background-color: #fafafa;
-    font-family: Arial, sans-serif;
-}*/
+
 
 /* Navbar*/ 
 .navbar {
@@ -21,9 +16,10 @@ body {
     box-sizing: border-box;
 }
 
-main {
-    margin-top: 100px;  /* navbar yüksekliği kadar boşluk bırak */
+body:not(.admin-body) main {
+  margin-top: 100px;
 }
+
 
 /* Sol kısım: logo */
 .logo {
@@ -1400,6 +1396,21 @@ body.loaded .dashboard-image {
 /*admin-dashboard*/
 
 
+.admin-dashboard-background {
+  background-image: url("../static/images/admin-dashboard.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 74.4px); /* Header yüksekliği çıkarılır */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+
+
 /* Sidebar Style */
 .admin-sidebar {
     position: fixed;
@@ -1418,7 +1429,7 @@ body.loaded .dashboard-image {
 
 /* Sidebar Links */
 .admin-sidebar a {
-      padding: 8px 12px;        
+    padding: 8px 12px;        
     color: #000;
     text-decoration: none;
     font-size: 18px;
@@ -1448,7 +1459,6 @@ body.loaded .dashboard-image {
 }
 .admin-layout main {
     margin-left: 280px;
-    padding: 40px;
 
 }
 
