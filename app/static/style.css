@@ -149,6 +149,157 @@ main {
 
 
 
+/* Login page layout */
+.login-layout {
+  display: flex;
+  height: 100vh;
+  margin-top: 0; 
+}
+
+/* Sol: Görsel */
+.login-left {
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-left img {
+  width: 100%;
+  height: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* Görsel üzerindeki yazı */
+.login-left-text {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  color: white;
+  max-width: 300px;
+}
+
+.login-left-text h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.login-left-text p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.login-right {
+  height: 100vh;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f8ff;
+}
+
+@media (max-width: 768px) {
+  .login-layout {
+    flex-direction: column;
+  }
+
+  .login-left,
+  .login-right {
+    width: 100%;
+    height: auto;
+  }
+
+  .login-left-text {
+    position: static;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+  }
+
+  .login-left img {
+    height: 300px;
+  }
+}
+
+.modern-login-form {
+  width: 100%;
+  max-width: 400px;
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modern-login-form h2 {
+  /*text-align: center;
+  font-size: 28px;
+  color: #222;
+  margin-bottom: 10px;*/
+  font-size: 26px;
+  font-weight: 600;
+  font-family: 'Segoe UI', sans-serif;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #444;
+  display: block;
+  margin-bottom: 6px;
+
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: #0077cc;
+  box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.1);
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 119, 204, 0.15);
+}
+
+.login-button:hover {
+  background-color: #005fa3;
+}
+.login-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.2);
+}
+.form-input,
+.login-button {
+  box-sizing: border-box;
+}
+
+
+
 
 
 

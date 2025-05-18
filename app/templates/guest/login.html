@@ -1,18 +1,54 @@
-{% extends 'layout/base_guest.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="login-layout">
+    <!-- Sol: Görsel + Yazı -->
+    <div class="login-left">
+      <img src="{{ url_for('static', filename='images/login-side.jpg') }}" alt="Login Visual">
+      <div class="login-left-text">
+        <h2>Bring your ideas to life.</h2>
+        <p>Sign up for free and enjoy access to all features for 30 days. No credit card required.</p>
+      </div>
+    </div>
 
-{% block content %}
-  
-  <form method="POST" class="register-form">
-    {{ form.hidden_tag() }}
-    <h2 class="form-title">Login</h2>
-    <div class="from-field">
-      <p>{{ form.email.label }}<br>{{ form.email(size=32) }}</p>
+    <!-- Sağ: Form -->
+    <div class="login-right">
+      <form method="POST" class="modern-login-form">
+        {{ form.hidden_tag() }}
+        <h2>Login</h2>
+        <div class="form-group">
+            <label for="email">Email</label>
+            {{ form.email(class="form-input") }}
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            {{ form.password(class="form-input") }}
+        </div>
+
+        <div>
+          {{ form.submit(class="login-button") }}
+        </div>
+        
+      <!--
+        <div class="form-field">
+          <p>{{ form.email.label }}<br>{{ form.email(size=32) }}</p>
+        </div>
+        <div class="form-field">
+          <p>{{ form.password.label }}<br>{{ form.password(size=32) }}</p>
+        </div>
+        <div>
+          <p>{{ form.submit(class="login-button") }}</p>
+        </div>
+      -->
+      </form>
     </div>
-    <div class="form-field">
-      <p>{{ form.password.label }}<br>{{ form.password(size=32) }}</p>
-    </div>
-    <div>
-      <p>{{ form.submit(class="login-button") }}</p>
-    </div>
-  </form>
-{% endblock %}
+  </div>
+</body>
+</html>
+
