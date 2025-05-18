@@ -8,7 +8,6 @@
 </head>
 <body>
   <div class="login-layout">
-    <!-- Sol: Görsel + Yazı -->
     <div class="login-left">
       <img src="{{ url_for('static', filename='images/login-side.jpg') }}" alt="Register Visual">
       <div class="login-left-text">
@@ -17,7 +16,6 @@
       </div>
     </div>
 
-    <!-- Sağ: Kayıt Formu -->
     <div class="login-right">
       <form method="POST" class="modern-login-form">
         {{ form.hidden_tag() }}
